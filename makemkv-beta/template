@@ -5,7 +5,6 @@
 pkgname=makemkv-beta # named like this, so that we can use 'version' later on
 version=1.14.4
 revision=1
-#wrksrc=
 create_wrksrc=yes # Multiple distfiles, hence necessary
 archs="i686 x86_64"
 build_style=gnu-configure
@@ -18,7 +17,7 @@ license="custom:MakeMKV,MPL,LGPL"
 homepage="http://www.makemkv.com/"
 distfiles="http://www.makemkv.com/download/makemkv-bin-${version}.tar.gz http://www.makemkv.com/download/makemkv-oss-${version}.tar.gz"
 checksum="63c86822f34283e10660ac1a06d6f868cd12a891742d25807809575e1bddb56e 4061d95d088c1f924ac1b061a9a10f09eee9bfd9f638dcd37c8bf57602a63658" # for 1.14.4
-nocross=yes # makemkvcon binary is provided for i386 and amd64 only, see do_install
+nocross=yes # makemkvcon binary is provided for i386 and amd64 only
 nopie=yes # shipped makemkvcon is non-pie, causing xbps-src to exit during do_install()
 shlib_provides="libmmbd.so.0 libdriveio.so.0 libmakemkv.so.1"
 
@@ -61,8 +60,8 @@ makemkv-beta-libaacs_package() {
 	short_desc="Symlinks to expose MakeMKV's decryption to the system"
 	version=1.14.4
 	revision=1
-	depends="${sourcepkg}>=${version}_${revision} coreutils"
-	conflicts="libaacs"
+	depends="${sourcepkg} coreutils" # doesn't need a specific version
+	conflicts="libaacs" # add libbdplus, should it become an official pkg
 	shlib_requires="libmmbd.so.0"
 	shlib_provides="libaacs.so.0 libbdplus.so.0"
 
