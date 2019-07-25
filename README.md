@@ -6,5 +6,7 @@ Just credit me (i.e. 'original template by 123randomuser321 <labmailssadur@gmail
 
 Currently existing templates:
 
+libbdplus
+libbdplus-devel (subpackage of libbdplus)
 makemkv-beta
 makemkv-beta-libaacs (subpackage of makemkv-beta)
