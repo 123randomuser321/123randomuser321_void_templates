@@ -1,0 +1,31 @@
+# Template file for 'libbdplus'
+# Generated with xnew
+pkgname=libbdplus
+version=0.1.2
+revision=1
+#archs="i686 x86_64"
+build_style=gnu-configure
+configure_args="--prefix=/usr --disable-static"
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends=""
+makedepends="coreutils libgcrypt-devel"
+depends="libgcrypt libaacs" # aacs is the base BD encryption, this is piled on top of it
+short_desc="An open implementation of the BD+ encryption"
+maintainer="Sembo Sadur <labmailssadur@gmail.com>"
+license="LGPL-2.1-or-later"
+homepage="https://www.videolan.org/developers/libbdplus.html"
+distfiles="http://ftp.videolan.org/pub/videolan/libbdplus/0.1.2/libbdplus-0.1.2.tar.bz2"
+checksum=a631cae3cd34bf054db040b64edbfc8430936e762eb433b1789358ac3d3dc80a
+
+
+libbdplus-devel_package() {
+	depends="${sourcepkg}-${version}_${revision}"
+	short_desc+="development files"
+	pkg_install() {
+	vmove usr/include
+	vmove usr/lib/pkgconfig
+	}
+}
