@@ -7,3 +7,4 @@ Just credit me (i.e. 'original template by 123randomuser321 <labmailssadur@gmail
 Currently existing templates:
 
 makemkv-beta
+makemkv-beta-libaacs (subpackage of makemkv-beta)
