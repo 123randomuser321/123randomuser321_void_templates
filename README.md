@@ -6,7 +6,7 @@ Just credit me (i.e. 'original template by 123randomuser321 <labmailssadur@gmail
 
 Currently existing templates:
 
-libbdplus
-libbdplus-devel (subpackage of libbdplus)
-makemkv-beta
-makemkv-beta-libaacs (subpackage of makemkv-beta)
+libbdplus <https://github.com/123randomuser321/123randomuser321_void_templates/tree/master/libbdplus>
+libbdplus-devel (subpackage of libbdplus) <https://github.com/123randomuser321/123randomuser321_void_templates/blob/master/libbdplus-devel>
+makemkv-beta <https://github.com/123randomuser321/123randomuser321_void_templates/tree/master/makemkv-beta>
+makemkv-beta-libaacs (subpackage of makemkv-beta) <https://github.com/123randomuser321/123randomuser321_void_templates/blob/master/makemkv-beta-libaacs>
