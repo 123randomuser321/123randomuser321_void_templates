@@ -13,6 +13,6 @@ libbdplus
 
 libbdplus-devel (subpackage of libbdplus)
 
-makemkv-beta
+makemkv
 
-makemkv-beta-libaacs (subpackage of makemkv-beta)
+makemkv-libaacs (subpackage of makemkv)
