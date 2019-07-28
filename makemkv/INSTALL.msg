@@ -1,4 +1,4 @@
-You _must_ agree to the provided license in /usr/share/licenses/makemkv-beta/,
+You _must_ agree to the provided license in /usr/share/licenses/makemkv/,
 since it has been set as accepted during do_build().
 
 ________
