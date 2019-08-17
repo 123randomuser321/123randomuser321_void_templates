@@ -16,3 +16,5 @@ libbdplus-devel (subpackage of libbdplus)
 makemkv
 
 makemkv-libaacs (subpackage of makemkv)
+
+minecraft-launcher
