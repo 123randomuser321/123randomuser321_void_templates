@@ -1,0 +1,28 @@
+# Template file for 'minecraft-launcher'
+# Generated with xnew
+# Adapted from Arch's AUR
+# https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=minecraft-launcher
+pkgname=minecraft-launcher
+version=1
+revision=1
+archs="noarch"
+create_wrksrc=yes
+depends="virtual?java-runtime xrandr libX11 libxcb alsa-lib gtk+ GConf libXtst nss" # couldn't find libxss or equivalent
+short_desc="The official launcher for the game Minecraft"
+maintainer="Sembo Sadur <labmailssadur@gmail.com>"
+license="Proprietary" # they do not ship a copy
+homepage="https://minecraft.net/"
+distfiles="https://launcher.mojang.com/download/Minecraft.tar.gz" # using the version-agnostic method for now
+checksum=85a0a2478861c3e660a1273f6b6ac2e14232ae439cd6d6172391065274228c72
+
+do_install() {
+	mkdir -p ${DESTDIR}/opt
+	mkdir -p ${DESTDIR}/usr/bin
+
+	# do svg and desktop
+	mkdir -p ${DESTDIR}/usr/share/applications
+	cp ${FILESDIR}/minecraft-launcher.desktop ${DESTDIR}/usr/share/applications/minecraft-launcher.desktop
+
+	cp -Rv minecraft-launcher ${DESTDIR}/opt/${pkgname}
+	ln -s /opt/minecraft-launcher/minecraft-launcher ${DESTDIR}/usr/bin/${pkgname}
+}
