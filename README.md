@@ -18,3 +18,5 @@ makemkv
 makemkv-libaacs (subpackage of makemkv)
 
 minecraft-launcher
+
+xrasengan
