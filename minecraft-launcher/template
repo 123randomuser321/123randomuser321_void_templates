@@ -19,7 +19,6 @@ do_install() {
 	mkdir -p ${DESTDIR}/opt
 	mkdir -p ${DESTDIR}/usr/bin
 
-	# do svg and desktop
 	mkdir -p ${DESTDIR}/usr/share/applications
 	cp ${FILESDIR}/minecraft-launcher.desktop ${DESTDIR}/usr/share/applications/minecraft-launcher.desktop
 
