@@ -26,7 +26,7 @@ shlib_provides="libmmbd.so.0 libdriveio.so.0 libmakemkv.so.1"
 do_configure() {
 	cd ${wrksrc}
 	cd makemkv-oss-${_dist_version}
-	./configure # only the oss files need to be configured
+	./configure
 }
 
 do_build() {
@@ -62,7 +62,7 @@ makemkv-libaacs_package() {
 	version=1.14.4beta
 	_dist_version=1.14.4
 	revision=1
-	depends="${sourcepkg} coreutils" # doesn't need a specific version
+	depends="${sourcepkg}" # doesn't need a specific version
 	conflicts="libaacs" # add libbdplus, should it become an official pkg
 	shlib_requires="libmmbd.so.0"
 	shlib_provides="libaacs.so.0 libbdplus.so.0"
