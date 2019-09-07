@@ -17,6 +17,8 @@ makemkv
 
 makemkv-libaacs (subpackage of makemkv)
 
+melonDS (not tested)
+
 minecraft-launcher
 
 xrasengan
