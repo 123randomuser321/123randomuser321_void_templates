@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=0.8.3
+Name=melonDS
+Comment=DS emulator, sorta
+Exec=/opt/melonDS/bin/melonDS
+Icon=melonDS
+Terminal=false
+Type=Application
+Categories=Game;

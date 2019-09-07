@@ -1,0 +1,59 @@
+# Template file for 'melonDS'
+# generated with xnew
+pkgname=melonDS
+version=0.8.3
+revision=1
+create_wrksrc=yes
+#archs="i686 x86_64"
+build_style=cmake
+#configure_args="-DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/melonDS"
+hostmakedepends="pkg-config gcc make"
+makedepends="gtk+3-devel libcurl-devel libpcap-devel SDL2-devel glib-devel"
+depends="gtk+3 libcurl libpcap SDL2"
+short_desc="DS emulator, sorta"
+maintainer="Sembo Sadur <labmailssadur@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="http://melonds.kuribo64.net/"
+distfiles="https://github.com/Arisotura/melonDS/archive/${version}.tar.gz"
+checksum=9cea84c2e2929f540e7333f16526fd10fad3d260e2e5fe24def7db9680817935
+nopie=yes
+
+do_configure() {
+	cd ${wrksrc}
+	cd ${pkgname}-${version}
+	mkdir -p build
+	cd build
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/melonDS .. # needs firmware, don't clutter /usr/bin
+}
+
+do_build() {
+	cd ${wrksrc}
+	cd ${pkgname}-${version}/build
+	make ${makejobs}
+}
+
+do_install() {
+	cd ${wrksrc}
+	cd ${pkgname}-${version}/build
+	make install DESTDIR=${DESTDIR}
+
+	mkdir -p ${DESTDIR}/usr/bin
+	ln -sf /opt/melonDS/bin/melonDS ${DESTDIR}/usr/bin/melonDS
+
+	cd ../icon
+	mkdir -p ${DESTDIR}/usr/share/icons/hicolor/16x16/apps
+	mkdir -p ${DESTDIR}/usr/share/icons/hicolor/32x32/apps
+	mkdir -p ${DESTDIR}/usr/share/icons/hicolor/48x48/apps
+	mkdir -p ${DESTDIR}/usr/share/icons/hicolor/64x64/apps
+	mkdir -p ${DESTDIR}/usr/share/icons/hicolor/128x128/apps
+	mkdir -p ${DESTDIR}/usr/share/icons/hicolor/256x256/apps
+	vinstall melon_16x16.png 0644 usr/share/icons/hicolor/16x16/ melonDS.png
+	vinstall melon_32x32.png 0644 usr/share/icons/hicolor/32x32/ melonDS.png
+	vinstall melon_48x48.png 0644 usr/share/icons/hicolor/48x48/ melonDS.png
+	vinstall melon_64x64.png 0644 usr/share/icons/hicolor/64x64/ melonDS.png
+	vinstall melon_128x128.png 0644 usr/share/icons/hicolor/128x128/ melonDS.png
+	vinstall melon_256x256.png 0644 usr/share/icons/hicolor/256x256/ melonDS.png
+
+	mkdir -p ${DESTDIR}/usr/share/applications
+	vinstall ${FILESDIR}/melonDS.desktop 0644 usr/share/applications/
+}
