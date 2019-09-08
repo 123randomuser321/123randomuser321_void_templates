@@ -2,7 +2,7 @@
 Version=0.8.3
 Name=melonDS
 Comment=DS emulator, sorta
-Exec=/opt/melonDS/bin/melonDS
+Exec=/opt/melonDS/melonDS
 Icon=melonDS
 Terminal=false
 Type=Application
