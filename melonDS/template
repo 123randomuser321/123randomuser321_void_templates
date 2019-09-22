@@ -41,18 +41,11 @@ do_install() {
 	vinstall ../romlist.bin 0644 opt/melonDS
 
 	cd ../icon
-	mkdir -p ${DESTDIR}/usr/share/icons/hicolor/16x16/apps
-	mkdir -p ${DESTDIR}/usr/share/icons/hicolor/32x32/apps
-	mkdir -p ${DESTDIR}/usr/share/icons/hicolor/48x48/apps
-	mkdir -p ${DESTDIR}/usr/share/icons/hicolor/64x64/apps
-	mkdir -p ${DESTDIR}/usr/share/icons/hicolor/128x128/apps
-	mkdir -p ${DESTDIR}/usr/share/icons/hicolor/256x256/apps
-	vinstall melon_16x16.png 0644 usr/share/icons/hicolor/16x16/ melonDS.png
-	vinstall melon_32x32.png 0644 usr/share/icons/hicolor/32x32/ melonDS.png
-	vinstall melon_48x48.png 0644 usr/share/icons/hicolor/48x48/ melonDS.png
-	vinstall melon_64x64.png 0644 usr/share/icons/hicolor/64x64/ melonDS.png
-	vinstall melon_128x128.png 0644 usr/share/icons/hicolor/128x128/ melonDS.png
-	vinstall melon_256x256.png 0644 usr/share/icons/hicolor/256x256/ melonDS.png
+	for i in 16x16 32x32 48x48 64x64 128x128 256x256
+	do
+	mkdir -p ${DESTDIR}/usr/share/icons/hicolor/${i}/apps
+	vinstall melon_${i}.png 0644 usr/share/icons/hicolor/${i}/apps melonDS.png
+	done
 
 	mkdir -p ${DESTDIR}/usr/share/applications
 	vinstall ${FILESDIR}/melonDS.desktop 0644 usr/share/applications/
