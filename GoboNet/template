@@ -24,7 +24,3 @@ post_extract() {
 pre_configure() {
 	./autogen.sh
 }
-
-post_install() {
-	mv ${DESTDIR}/usr/sbin/gobonet_backend ${DESTDIR}/usr/bin
-}
