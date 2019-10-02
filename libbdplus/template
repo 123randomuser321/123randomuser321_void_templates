@@ -6,7 +6,7 @@ revision=1
 build_style=gnu-configure
 configure_args="--prefix=/usr --disable-static"
 makedepends="coreutils libgcrypt-devel"
-depends="libgcrypt libaacs" # aacs is the base BD encryption, this is piled on top of it
+depends="libgcrypt"
 short_desc="An open implementation of the BD+ encryption"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="LGPL-2.1-or-later"
@@ -17,7 +17,7 @@ checksum=a631cae3cd34bf054db040b64edbfc8430936e762eb433b1789358ac3d3dc80a
 
 libbdplus-devel_package() {
 	depends="${sourcepkg}-${version}_${revision}"
-	short_desc+="development files"
+	short_desc+=" - development files"
 	pkg_install() {
 	vmove usr/include
 	vmove usr/lib/pkgconfig

@@ -4,10 +4,9 @@ pkgname=GoboNet
 version=0.12
 revision=1
 create_wrksrc=yes
-#archs="x86_64" # Gobo is distributed as x86_64 only
 build_style=gnu-configure
+configure_args="--prefix=/usr"
 hostmakedepends="autoconf automake"
-makedepends=""
 depends="wpa_supplicant dhcpcd util-linux net-tools wireless_tools psmisc pinentry bash coreutils"
 # You could also use inetutils-ifconfig vs net-tools but I do not know how to let xbps switch yet
 short_desc="An ultra-minimalistic network manager"
@@ -19,12 +18,11 @@ checksum=12c0e61b69c376d3ace356e2bdba21b1705cccd2f1107b1d3ed07582e86707cd
 
 post_extract() {
 	mv ${pkgname}-${version}/* ${wrksrc}
-	rm -r ${pkgname}-${version}
+	rm -rf ${pkgname}-${version}
 }
 
-do_configure() {
+pre_configure() {
 	./autogen.sh
-	./configure --prefix=/usr
 }
 
 post_install() {

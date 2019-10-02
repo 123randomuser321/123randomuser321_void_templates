@@ -4,10 +4,9 @@ pkgname=melonDS
 version=0.8.3
 revision=1
 create_wrksrc=yes
-#archs="i686 x86_64"
 build_style=cmake
-#configure_args="-DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/melonDS"
-hostmakedepends="pkg-config gcc make"
+configure_args="-DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/melonDS"
+hostmakedepends="pkg-config"
 makedepends="gtk+3-devel libcurl-devel libpcap-devel SDL2-devel glib-devel"
 depends="gtk+3 libcurl libpcap SDL2"
 short_desc="DS emulator, sorta"
@@ -18,29 +17,19 @@ distfiles="https://github.com/Arisotura/melonDS/archive/${version}.tar.gz"
 checksum=9cea84c2e2929f540e7333f16526fd10fad3d260e2e5fe24def7db9680817935
 nopie=yes
 
-do_configure() {
-	cd ${wrksrc}
-	cd ${pkgname}-${version}
-	mkdir -p build
-	cd build
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/melonDS .. # needs firmware, don't clutter /usr/bin
+post_extract() {
+	mv ${pkgname}-${version}/* ${wrksrc}
+	rm -rf ${pkgname}-${version}
 }
 
-do_build() {
+post_install() {
 	cd ${wrksrc}
-	cd ${pkgname}-${version}/build
-	make ${makejobs}
-}
+	mv ${DESTDIR}/opt/melonDS/bin/melonDS ${DESTDIR}/opt/melonDS
+	rm -rf ${DESTDIR}/opt/melonDS/bin
 
-do_install() {
-	cd ${wrksrc}
-	cd ${pkgname}-${version}/build
-	mkdir -p ${DESTDIR}/opt/melonDS
-	vinstall melonDS 0755 opt/melonDS
+	vinstall build/romlist.bin 0644 opt/melonDS
 
-	vinstall ../romlist.bin 0644 opt/melonDS
-
-	cd ../icon
+	cd icon
 	for i in 16x16 32x32 48x48 64x64 128x128 256x256
 	do
 	mkdir -p ${DESTDIR}/usr/share/icons/hicolor/${i}/apps
