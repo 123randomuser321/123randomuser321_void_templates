@@ -1,0 +1,19 @@
+# Template file for 'citra'
+# Generated with xnew
+pkgname=citra
+version=20191003 # change this to keep track yourself
+revision=1
+#create_wrksrc=yes
+build_style=cmake
+configure_args="-DCMAKE_BUILD_TYPE=Release -DENABLE_FFMPEG_AUDIO_DECODER=ON"
+hostmakedepends="git"
+makedepends="SDL2-devel qt5-devel qt5-multimedia-devel fdk-aac-devel ffmpeg-devel alsa-lib-devel boost-devel"
+depends="SDL2 qt5 fdk-aac ffmpeg"
+short_desc="A Nintendo 3DS Emulator"
+maintainer="Sembo Sadur <labmailssadur@gmail.com>"
+license="GPL-2.0-only" # not sure about this
+homepage="https://citra-emu.org/"
+
+do_fetch() {
+	git clone --recursive https://github.com/citra-emu/citra ${pkgname}-${version}
+}
