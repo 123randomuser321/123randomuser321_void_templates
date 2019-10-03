@@ -9,6 +9,8 @@ Just credit me (i.e. 'original template by 123randomuser321 <labmailssadur@gmail
 Currently existing templates:
 
 
+citra (manual editing needed)
+
 GoboNet
 
 libbdplus
