@@ -3,7 +3,6 @@
 pkgname=citra
 version=20191003 # change this to keep track yourself
 revision=1
-#create_wrksrc=yes
 build_style=cmake
 configure_args="-DCMAKE_BUILD_TYPE=Release -DENABLE_FFMPEG_AUDIO_DECODER=ON"
 hostmakedepends="git"
@@ -16,4 +15,6 @@ homepage="https://citra-emu.org/"
 
 do_fetch() {
 	git clone --recursive https://github.com/citra-emu/citra ${pkgname}-${version}
+	#cd ${pkgname}-${version}
+	#git reset --hard [your_commit_hash]
 }
