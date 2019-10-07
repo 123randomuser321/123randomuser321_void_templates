@@ -3,9 +3,9 @@
 # Instructions adapted from official 'guide': https://www.makemkv.com/forum/viewtopic.php?f=3&t=224
 # Partial adaption from Arch Linux's AUR: https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=makemkv
 pkgname=makemkv
-version=1.14.4beta
-_dist_version=1.14.4
-revision=2
+version=1.14.5beta
+_dist_version=1.14.5
+revision=1
 create_wrksrc=yes
 archs="i686 x86_64" # makemkvcon binary is provided for i386 and amd64 only
 build_style=gnu-configure
@@ -17,7 +17,7 @@ maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="custom:MakeMKV,MPL,LGPL"
 homepage="http://www.makemkv.com/"
 distfiles="http://www.makemkv.com/download/makemkv-bin-${_dist_version}.tar.gz http://www.makemkv.com/download/makemkv-oss-${_dist_version}.tar.gz"
-checksum="63c86822f34283e10660ac1a06d6f868cd12a891742d25807809575e1bddb56e 4061d95d088c1f924ac1b061a9a10f09eee9bfd9f638dcd37c8bf57602a63658" # for 1.14.4
+checksum="3a5a34facad3705518cbef26dfd424bc075e3a19a2a159b9bac3261220e8d3e6 d177f5962054d3b866d871aa06f1611dcced7ef2f0dcd41a771a50467505e1c9" # for 1.14.5
 nocross=yes
 nopie_files="/usr/bin/makemkvcon"
 shlib_provides="libmmbd.so.0 libdriveio.so.0 libmakemkv.so.1"
