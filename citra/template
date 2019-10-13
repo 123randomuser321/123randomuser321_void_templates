@@ -10,7 +10,7 @@ makedepends="SDL2-devel qt5-devel qt5-multimedia-devel fdk-aac-devel ffmpeg-deve
 depends="SDL2 qt5 fdk-aac ffmpeg"
 short_desc="A Nintendo 3DS Emulator"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
-license="GPL-2.0-only" # not sure about this
+license="GPL-2.0-or-later"
 homepage="https://citra-emu.org/"
 
 do_fetch() {
