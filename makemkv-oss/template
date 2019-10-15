@@ -1,0 +1,41 @@
+# Template file for 'makemkv-oss'
+# Generated with xnew
+pkgname=makemkv-oss
+version=1.14.5beta
+_dist_version=1.14.5
+revision=1
+wrksrc=${pkgname}-${_dist_version}
+archs="i686 x86_64"
+build_style=gnu-configure
+#configure_args=""
+hostmakedepends="pkg-config"
+makedepends="glibc-devel libressl-devel zlib-devel expat-devel libavcodec ffmpeg-devel MesaLib-devel qt5-devel"
+depends="glibc libressl zlib expat libavcodec ffmpeg qt5 libbluray"
+short_desc="A program to convert or backup optical discs, including encrypted Blu-Rays (OSS package)"
+maintainer="Sembo Sadur <labmailssadur@gmail.com>"
+license="LGPL-2.1-or-later,custom:MakeMKV"
+homepage="https://www.makemkv.com/"
+distfiles="https://www.makemkv.com/download/makemkv-oss-${_dist_version}.tar.gz"
+checksum=d177f5962054d3b866d871aa06f1611dcced7ef2f0dcd41a771a50467505e1c9
+nocross=yes
+shlib_provides="libmmbd.so.0 libdriveio.so.0 libmakemkv.so.1"
+
+post_install() {
+	vlicense License.txt
+}
+
+
+makemkv-libaacs_package() {
+	short_desc="Symlinks to expose MakeMKV's decryption to the system"
+	version=1.14.5beta
+	revision=1
+	depends="${sourcepkg}"
+	conflicts="libaacs" # and libbdplus
+	shlib_provides="libaacs.so.0 libbdplus.so.0"
+
+	pkg_install() {
+	mkdir -p ${PKGDESTDIR}/usr/lib
+	ln -sf libmmbd.so.0 ${PKGDESTDIR}/usr/lib/libaacs.so.0
+	ln -sf libmmbd.so.0 ${PKGDESTDIR}/usr/lib/libbdplus.so.0
+	}
+}
