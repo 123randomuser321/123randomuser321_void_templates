@@ -17,9 +17,13 @@ libbdplus
 
 libbdplus-devel (subpackage of libbdplus)
 
-makemkv
+makemkv (meta package for -bin and -oss
 
-makemkv-libaacs (subpackage of makemkv)
+makemkv-bin (makemkvcon binary)
+
+makemkv-libaacs (subpackage of makemkv-oss)
+
+makemkv-oss (OSS part of MakeMKV)
 
 melonDS
 
