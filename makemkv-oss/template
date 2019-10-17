@@ -5,11 +5,11 @@ version=1.14.5beta
 _dist_version=1.14.5
 revision=1
 wrksrc=${pkgname}-${_dist_version}
-archs="i686 x86_64"
+archs="i686 x86_64 x86_64-musl"
 build_style=gnu-configure
 hostmakedepends="pkg-config"
-makedepends="glibc-devel libressl-devel zlib-devel expat-devel libavcodec ffmpeg-devel MesaLib-devel qt5-devel"
-depends="glibc libressl zlib expat libavcodec ffmpeg qt5 libbluray"
+makedepends="libressl-devel zlib-devel expat-devel libavcodec ffmpeg-devel MesaLib-devel qt5-devel"
+depends="libressl zlib expat libavcodec ffmpeg qt5 libbluray"
 short_desc="A program to convert or backup optical discs, including encrypted Blu-Rays (OSS package)"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="LGPL-2.1-or-later,custom:MakeMKV"
@@ -17,6 +17,11 @@ homepage="https://www.makemkv.com/"
 distfiles="https://www.makemkv.com/download/makemkv-oss-${_dist_version}.tar.gz"
 checksum=d177f5962054d3b866d871aa06f1611dcced7ef2f0dcd41a771a50467505e1c9
 nocross=yes
+
+case "${XBPS_TARGET_MACHINE}" in
+	*-musl) makedepends+=" musl-devel" depends+=" musl gcompat";;
+	*) makedepends+=" glibc-devel" depends+=" glibc";;
+esac
 
 post_install() {
 	vlicense License.txt

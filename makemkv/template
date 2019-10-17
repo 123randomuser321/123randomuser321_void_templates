@@ -3,7 +3,7 @@
 pkgname=makemkv
 version=1.14.5beta
 revision=1
-archs="i686 x86_64"
+archs="i686 x86_64 x86_64-musl"
 build_style=meta
 depends="makemkv-bin makemkv-oss"
 short_desc="A program to convert or backup optical discs, including encrypted Blu-Rays (meta package)"
