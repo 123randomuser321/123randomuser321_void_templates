@@ -19,7 +19,7 @@ checksum=d177f5962054d3b866d871aa06f1611dcced7ef2f0dcd41a771a50467505e1c9
 nocross=yes
 
 case "${XBPS_TARGET_MACHINE}" in
-	*-musl) makedepends+=" musl-devel" depends+=" musl gcompat";;
+	*-musl) makedepends+=" musl-devel" depends+=" musl";;
 	*) makedepends+=" glibc-devel" depends+=" glibc";;
 esac
 
