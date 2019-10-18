@@ -1,7 +1,7 @@
 # Template file for 'citra'
 # Generated with xnew
 pkgname=citra
-version=20191003 # change this to keep track yourself
+version=20191018 # change this to keep track yourself
 revision=1
 build_style=cmake
 configure_args="-DCMAKE_BUILD_TYPE=Release -DENABLE_FFMPEG_AUDIO_DECODER=ON"
@@ -12,9 +12,10 @@ short_desc="A Nintendo 3DS Emulator"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://citra-emu.org/"
+#_your_commit_hash=myfourtydigitnumbercantbethiscuteecksdee
 
 do_fetch() {
 	git clone --recursive https://github.com/citra-emu/citra ${pkgname}-${version}
 	#cd ${pkgname}-${version}
-	#git reset --hard [your_commit_hash]
+	#git reset --hard ${_your_commit_hash}
 }

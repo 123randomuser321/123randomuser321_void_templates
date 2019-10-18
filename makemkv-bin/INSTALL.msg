@@ -1,5 +1,5 @@
 You _must_ agree to the provided license in /usr/share/licenses/makemkv-bin/,
-since it has been set as accepted during do_build().
+since it has been set as accepted during pre_build().
 
 ________
 

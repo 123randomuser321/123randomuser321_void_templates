@@ -4,10 +4,10 @@ pkgname=libbdplus
 version=0.1.2
 revision=1
 build_style=gnu-configure
-configure_args="--prefix=/usr --disable-static"
-makedepends="coreutils libgcrypt-devel"
+configure_args="--disable-static"
+makedepends="libgcrypt-devel"
 depends="libgcrypt"
-short_desc="An open implementation of the BD+ encryption"
+short_desc="Open implementation of BD+ protocol"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://www.videolan.org/developers/libbdplus.html"

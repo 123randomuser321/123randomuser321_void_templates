@@ -17,7 +17,7 @@ license="LGPL-2.1-or-later,custom:MakeMKV"
 homepage="https://www.makemkv.com/"
 distfiles="https://www.makemkv.com/download/makemkv-oss-${_dist_version}.tar.gz"
 checksum=d177f5962054d3b866d871aa06f1611dcced7ef2f0dcd41a771a50467505e1c9
-nocross=yes
+nocross=yes # cross fails for a lot of reasons, though all native builds work
 
 case "${XBPS_TARGET_MACHINE}" in
 	*-musl) makedepends+=" musl-devel" depends+=" musl";;
@@ -33,7 +33,7 @@ makemkv-libaacs_package() {
 	short_desc="Symlinks to expose MakeMKV's decryption to the system"
 	version=1.14.5beta
 	revision=1
-	depends="${sourcepkg}"
+	depends="${sourcepkg}=${version}_${revision}"
 	conflicts="libaacs" # and libbdplus
 
 	pkg_install() {

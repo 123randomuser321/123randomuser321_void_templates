@@ -1,9 +1,8 @@
 # Template file for 'melonDS'
-# generated with xnew
+# Generated with xnew
 pkgname=melonDS
 version=0.8.3
 revision=1
-create_wrksrc=yes
 build_style=cmake
 configure_args="-DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/melonDS"
 hostmakedepends="pkg-config"
@@ -17,13 +16,7 @@ distfiles="https://github.com/Arisotura/melonDS/archive/${version}.tar.gz"
 checksum=9cea84c2e2929f540e7333f16526fd10fad3d260e2e5fe24def7db9680817935
 nopie=yes
 
-post_extract() {
-	mv ${pkgname}-${version}/* ${wrksrc}
-	rm -rf ${pkgname}-${version}
-}
-
 post_install() {
-	cd ${wrksrc}
 	mv ${DESTDIR}/opt/melonDS/bin/melonDS ${DESTDIR}/opt/melonDS
 	rm -rf ${DESTDIR}/opt/melonDS/bin
 
@@ -32,10 +25,8 @@ post_install() {
 	cd icon
 	for i in 16x16 32x32 48x48 64x64 128x128 256x256
 	do
-	mkdir -p ${DESTDIR}/usr/share/icons/hicolor/${i}/apps
 	vinstall melon_${i}.png 0644 usr/share/icons/hicolor/${i}/apps melonDS.png
 	done
 
-	mkdir -p ${DESTDIR}/usr/share/applications
 	vinstall ${FILESDIR}/melonDS.desktop 0644 usr/share/applications/
 }
