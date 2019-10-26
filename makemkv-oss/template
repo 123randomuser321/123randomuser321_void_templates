@@ -33,8 +33,9 @@ makemkv-libaacs_package() {
 	short_desc="Symlinks to expose MakeMKV's decryption to the system"
 	version=1.14.5beta
 	revision=1
-	depends="${sourcepkg}=${version}_${revision}"
+	depends="${sourcepkg}"
 	conflicts="libaacs" # and libbdplus
+	shlib_provides="libaacs.so.0 libbdplus.so.0"
 
 	pkg_install() {
 	mkdir -p ${PKGDESTDIR}/usr/lib
