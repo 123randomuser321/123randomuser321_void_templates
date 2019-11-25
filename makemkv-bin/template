@@ -15,6 +15,7 @@ homepage="https://www.makemkv.com/"
 distfiles="https://www.makemkv.com/download/makemkv-bin-${_dist_version}.tar.gz"
 checksum=3a5a34facad3705518cbef26dfd424bc075e3a19a2a159b9bac3261220e8d3e6
 nopie_files="/usr/bin/makemkvcon"
+nostrip=yes
 skiprdeps="/usr/bin/makemkvcon"
 
 if [ "${XBPS_TARGET_MACHINE}" = x86_64-musl ]
