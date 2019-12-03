@@ -2,6 +2,9 @@
 # Generated with xnew
 # Adapted from Arch's AUR
 # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=minecraft-launcher
+
+### this template is currently broken
+
 pkgname=minecraft-launcher
 version=1
 revision=1
