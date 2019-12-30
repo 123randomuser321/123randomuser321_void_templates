@@ -1,8 +1,8 @@
 # Template file for 'makemkv-oss'
 # Generated with xnew
 pkgname=makemkv-oss
-version=1.14.6beta
-_dist_version=1.14.6
+version=1.14.7beta
+_dist_version=1.14.7
 revision=1
 wrksrc=${pkgname}-${_dist_version}
 archs="i686 x86_64 x86_64-musl"
@@ -16,7 +16,7 @@ maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="LGPL-2.1-or-later,custom:MakeMKV"
 homepage="https://www.makemkv.com/"
 distfiles="https://www.makemkv.com/download/makemkv-oss-${_dist_version}.tar.gz"
-checksum=9d8c5c9de67fb3f94bfcb762fa528651d50cc078825a58937770f432c8b27916
+checksum=a95cb77030851138df0b936f2a2cf01f4b48b5a1a02a4599d82d3c073723cbf0
 nocross=yes # cross fails for a lot of reasons, though all native builds work
 
 case "${XBPS_TARGET_MACHINE}" in
@@ -31,7 +31,7 @@ post_install() {
 
 makemkv-libaacs_package() {
 	short_desc="Symlinks to expose MakeMKV's decryption to the system"
-	version=1.14.6beta
+	version=1.14.7beta
 	revision=1
 	depends="${sourcepkg}"
 	conflicts="libaacs" # and libbdplus
