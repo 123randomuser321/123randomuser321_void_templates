@@ -1,0 +1,27 @@
+# Template file for 'nouveau-firmware'
+pkgname=nouveau-firmware
+version=325.15
+revision=1
+archs="x86_64" # todo
+create_wrksrc=yes
+hostmakedepends="python"
+short_desc="Firmware needed by nouveau for certain features (e.g. VideoAccel)"
+maintainer="Sembo Sadur  <labmailssadur@gmail.com>"
+license="custom:NVIDIA Proprietary"
+homepage="https://nouveau.freedesktop.org/wiki/VideoAcceleration/"
+distfiles="https://raw.githubusercontent.com/imirkin/re-vp2/master/extract_firmware.py http://us.download.nvidia.com/XFree86/Linux-x86/${version}/NVIDIA-Linux-x86-${version}.run"
+checksum="154bbf69e593b407448fcdb4c7804464a827dd9c6cde1048ec484b06680cad0d 3d790e4bfed24641f7cc76879144ab5d52b12271012ba381b0d33aa1a2e08775"
+#skip_extraction="extract_firmware.py NVIDIA-Linux-x86-${version}.run"
+
+do_extract() {
+	install -m775 ${XBPS_SRCDISTDIR}/${pkgname}-${version}/* ${wrksrc}
+	cd ${wrksrc}
+	sh NVIDIA-Linux-x86-${version}.run --extract-only
+	python2 extract_firmware.py
+}
+
+do_install() {
+	mkdir -p ${DESTDIR}/usr/lib/firmware/nouveau
+	cp -d nv* vuc-* ${DESTDIR}/usr/lib/firmware/nouveau
+	vlicense NVIDIA-Linux-x86-${version}/LICENSE
+}
