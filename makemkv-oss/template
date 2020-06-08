@@ -38,8 +38,8 @@ makemkv-libaacs_package() {
 	shlib_provides="libaacs.so.0 libbdplus.so.0"
 
 	pkg_install() {
-	mkdir -p ${PKGDESTDIR}/usr/lib
-	ln -sf libmmbd.so.0 ${PKGDESTDIR}/usr/lib/libaacs.so.0
-	ln -sf libmmbd.so.0 ${PKGDESTDIR}/usr/lib/libbdplus.so.0
+		mkdir -p ${PKGDESTDIR}/usr/lib
+		ln -sf libmmbd.so.0 ${PKGDESTDIR}/usr/lib/libaacs.so.0
+		ln -sf libmmbd.so.0 ${PKGDESTDIR}/usr/lib/libbdplus.so.0
 	}
 }

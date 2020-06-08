@@ -25,7 +25,7 @@ post_install() {
 	cd icon
 	for i in 16x16 32x32 48x48 64x64 128x128 256x256
 	do
-	vinstall melon_${i}.png 0644 usr/share/icons/hicolor/${i}/apps melonDS.png
+		vinstall melon_${i}.png 0644 usr/share/icons/hicolor/${i}/apps melonDS.png
 	done
 
 	vinstall ${FILESDIR}/melonDS.desktop 0644 usr/share/applications/
