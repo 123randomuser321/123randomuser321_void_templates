@@ -1,11 +1,11 @@
 # Template file for 'makemkv-bin'
 # Generated with xnew
 pkgname=makemkv-bin
-version=1.15.4beta
-_dist_version=1.15.4
+version=1.16.3beta
+_dist_version=1.16.3
 revision=1
 wrksrc=${pkgname}-${_dist_version}
-archs="i686 x86_64 x86_64-musl"
+archs="i686 x86_64" # there's also arm, that will be done later
 build_style=gnu-makefile
 depends="makemkv-oss"
 short_desc="A program to convert or backup optical discs, including encrypted Blu-Rays (binary package)"
@@ -13,14 +13,10 @@ maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="GPL-2.0-or-later,custom:MakeMKV"
 homepage="https://www.makemkv.com/"
 distfiles="https://www.makemkv.com/download/makemkv-bin-${_dist_version}.tar.gz"
-checksum=45eba7e61a7b467b1fe8de722fa890d556e19f3fc02a7b7f8d846ac8e2badb9a
+checksum=1b65dc78cc2216ee1f593e0bdc72730c1feb0f77925fa928e91755c3bd902f38
 nopie_files="/usr/bin/makemkvcon"
 nostrip=yes
 skiprdeps="/usr/bin/makemkvcon"
-
-if [ "${XBPS_TARGET_MACHINE}" = x86_64-musl ]
-	then depends+=" gcompat"
-fi
 
 pre_build() {
 	mkdir -p tmp

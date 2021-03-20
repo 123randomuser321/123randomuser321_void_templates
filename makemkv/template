@@ -1,9 +1,9 @@
 # Template file for 'makemkv'
 # Generated with xnew
 pkgname=makemkv
-version=1.15.4beta
+version=1.16.3beta
 revision=1
-archs="i686 x86_64 x86_64-musl"
+archs="i686 x86_64"
 build_style=meta
 depends="makemkv-bin makemkv-oss"
 short_desc="A program to convert or backup optical discs, including encrypted Blu-Rays (meta package)"

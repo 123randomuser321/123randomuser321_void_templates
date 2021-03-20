@@ -1,28 +1,23 @@
 # Template file for 'makemkv-oss'
 # Generated with xnew
 pkgname=makemkv-oss
-version=1.15.4beta
-_dist_version=1.15.4
+version=1.16.3beta
+_dist_version=1.16.3
 revision=1
 wrksrc=${pkgname}-${_dist_version}
-archs="i686 x86_64 x86_64-musl"
+archs="i686 x86_64"
 build_style=gnu-configure
 configure_args="--disable-qt4 --with-pic"
 hostmakedepends="pkg-config"
-makedepends="libressl-devel zlib-devel expat-devel libavcodec ffmpeg-devel MesaLib-devel qt5-devel"
-depends="libressl zlib expat libavcodec ffmpeg qt5 libbluray"
+makedepends="openssl-devel zlib-devel expat-devel libavcodec ffmpeg-devel MesaLib-devel qt5-devel"
+depends="openssl zlib expat libavcodec ffmpeg qt5 libbluray"
 short_desc="A program to convert or backup optical discs, including encrypted Blu-Rays (OSS package)"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="LGPL-2.1-or-later,custom:MakeMKV"
 homepage="https://www.makemkv.com/"
 distfiles="https://www.makemkv.com/download/makemkv-oss-${_dist_version}.tar.gz"
-checksum=82d062d4844d17901293f65dce40e63ae1084fd81accd6913427eda9b2c43fe3
+checksum=6141a8ccff41eaf9964385b172d49b7b3ceefb4c8b25734a424f53c27405f05d
 nocross=yes # cross fails for a lot of reasons, though all native builds work
-
-case "${XBPS_TARGET_MACHINE}" in
-	*-musl) makedepends+=" musl-devel" depends+=" musl";;
-	*) makedepends+=" glibc-devel" depends+=" glibc";;
-esac
 
 post_install() {
 	vlicense License.txt
