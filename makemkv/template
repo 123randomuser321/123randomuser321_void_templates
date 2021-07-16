@@ -1,7 +1,7 @@
 # Template file for 'makemkv'
 # Generated with xnew
 pkgname=makemkv
-version=1.16.3beta
+version=1.16.4beta
 revision=1
 archs="i686 x86_64"
 build_style=meta
