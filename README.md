@@ -2,27 +2,21 @@
 Unless specified elsewhere, I do not intend to submit these.
 
 If you want to do so, you can use my templates as a base to create your own for submission to void-packages.
-Just credit me (i.e. 'original template by 123randomuser321 <labmailssadur@gmail.com>') somewhere in the template and notify me, preferably per email. You do not need my explicit permission to use these, so a reply is not necessary.
+Just notify me, preferably per email (this is purely so I may notice, this is in no way a requirement to use anything).
 
 
 
 Currently existing templates:
 
 
-citra (manual editing needed)
+- citra (manual editing needed) (bad, will be reworked)
 
-GoboNet
+- fre:ac (written as freac; plus its deps smooth and BoCA, and their -devel pkgs)
 
-libbdplus
+- GoboNet
 
-libbdplus-devel (subpackage of libbdplus)
+- libbdplus, + -devel
 
-makemkv (meta package for -bin and -oss)
+- makemkv (meta, -bin, -oss, -libaacs)
 
-makemkv-bin (makemkvcon binary)
-
-makemkv-libaacs (subpackage of makemkv-oss)
-
-makemkv-oss (OSS part of MakeMKV)
-
-xrasengan
+- xrasengan
