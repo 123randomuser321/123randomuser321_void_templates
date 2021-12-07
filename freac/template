@@ -1,0 +1,23 @@
+# Template file for 'freac'
+pkgname=freac # xbps-src doesn't like ":"
+version=1.1.5
+revision=1
+archs="x86_64* i686*" # mirror smooth
+build_style=gnu-makefile
+make_install_args="prefix=/usr"
+hostmakedepends="pkg-config"
+makedepends="smooth-devel BoCA-devel eudev-libudev-devel"
+depends=""
+short_desc="The fre:ac audio converter project"
+maintainer="Sembo Sadur <labmailssadur@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://www.freac.org/"
+distfiles="https://github.com/enzo1982/freac/releases/download/v${version}/freac-${version}.tar.gz"
+checksum=62c61840a935dba5230fb7295b508370cd4f1e861db9d479f21c858a8aac3470
+
+
+pre_build() {
+	
+	LD=${CC} # Makefile-options does this too, but the build env borks it somehow
+
+}

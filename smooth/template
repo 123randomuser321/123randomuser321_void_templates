@@ -1,0 +1,45 @@
+# Template file for 'smooth'
+pkgname=smooth
+version=0.9.8
+revision=1
+archs="x86_64* i686*" # arm variants miss cpuid
+build_style=gnu-makefile
+make_install_args="prefix=/usr"
+hostmakedepends="pkg-config"
+makedepends="bzip2-devel libcurl-devel fribidi-devel gtk+3-devel libjpeg-turbo-devel libxml2-devel libcpuid-devel libwebp-devel"
+depends=""
+short_desc="The smooth Class Library"
+maintainer="Sembo Sadur <labmailssadur@gmail.com>"
+license="Artistic-2.0"
+homepage="http://www.smooth-project.org/"
+distfiles="https://github.com/enzo1982/smooth/releases/download/v${version}/smooth-${version}.tar.gz"
+checksum=a02c3c15fc9f221809bd16ebbe56460f04facb36ed80ba1d0975526896d9fb42
+
+
+pre_build() {
+	
+	LD=${CC} # Makefile-options does this too, but the build env borks it somehow
+
+}
+
+
+post_install() {
+	
+	# Not sure if I'm misinterpreting the license here, but do this to be sure
+	for f in ${PATCHESDIR}/*.patch; do
+		vinstall ${f} 644 usr/share/${pkgname}/src/patches;
+	done
+
+}
+
+
+smooth-devel_package() {
+	
+	short_desc+=" - development files"
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+
+		vmove usr/include
+
+	}
+}

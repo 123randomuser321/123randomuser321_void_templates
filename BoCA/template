@@ -1,0 +1,39 @@
+# Template file for 'BoCA'
+pkgname=BoCA
+version=1.0.5
+revision=1
+archs="x86_64* i686*" # mirror smooth
+build_style=gnu-makefile
+wrksrc=boca-${version}
+make_build_args="config=systemzlib"
+make_install_args="prefix=/usr"
+hostmakedepends="pkg-config"
+makedepends="smooth-devel pulseaudio-devel libcdio-devel libcdio-paranoia-devel \
+expat-devel uriparser-devel tagparser-devel gst-plugins-bad1-devel zlib-devel"
+# I had to guess tagparser and gst-plugins-bad1
+short_desc="A component library used by the fre:ac audio converter"
+maintainer="Sembo Sadur <labmailssadur@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://www.freac.org/"
+distfiles="https://github.com/enzo1982/BoCA/releases/download/v${version}/boca-${version}.tar.gz"
+checksum=9befa4555b5d9a0ecf3b8472f1d8f14c26dee50993d1d66f35a2d0f140a72870
+
+
+pre_build() {
+	
+	LD=${CC} # Makefile-options does this too, but the build env borks it somehow
+
+}
+
+
+BoCA-devel_package() {
+	
+	short_desc+=" - development files"
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+
+		vmove usr/include
+
+	}
+
+}
