@@ -1,11 +1,11 @@
-# Template file for 'flips', generated with xnew
+# Template file for 'flips'
 pkgname=flips
 version=2021.12.05
 revision=1
 _buildcommit=96df78fd733ebc56d64bcfcaee7d127bfd6643d6 # change as you please
 build_style=gnu-makefile
-# mirror flags from make.sh
-_ADDFLAGS="-Wall -O3 -flto -fuse-linker-plugin -fomit-frame-pointer \
+# mirror flags from make.sh (no clue if it actually accepts -O3)
+_ADDFLAGS=" -Wall -O3 -flto -fuse-linker-plugin -fomit-frame-pointer \
 -fmerge-all-constants -fvisibility=hidden -fno-exceptions -fno-unwind-tables \
 -fno-asynchronous-unwind-tables -ffunction-sections -fdata-sections -Wl,--gc-sections \
 -fprofile-dir=obj/ -Wl,-z,relro,-z,now,--as-needed,--hash-style=gnu,--relax \
