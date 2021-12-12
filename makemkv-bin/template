@@ -41,5 +41,6 @@ pre_build() {
 post_install() {
 
 	vlicense src/eula_en_linux.txt
+	vinstall ${FILESDIR}/${pkgname}.README.voidlinux 644 usr/share/doc/makemkv
 
 }

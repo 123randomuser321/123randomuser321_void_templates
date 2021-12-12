@@ -20,7 +20,7 @@ checksum=e58e34b3ce95462bc38a242a120692c2b4e56c5a98e57cce372931ff486c3b8c
 post_install() {
 
 	vlicense License.txt
-	vinstall ${FILESDIR}/makemkv.README.voidlinux 644 usr/share/doc/makemkv
+	vinstall ${FILESDIR}/${pkgname}.README.voidlinux 644 usr/share/doc/makemkv
 
 }
 
@@ -40,7 +40,7 @@ makemkv-libaacs_package() {
 		ln -sf libmmbd.so.0 ${PKGDESTDIR}/usr/lib/libaacs.so.0
 		ln -sf libmmbd.so.0 ${PKGDESTDIR}/usr/lib/libbdplus.so.0
 
-		vinstall ${FILESDIR}/makemkv-libaacs.README.voidlinux 644 usr/share/doc/makemkv
+		vinstall ${FILESDIR}/${pkgname}.README.voidlinux 644 usr/share/doc/makemkv
 
 	}
 }
