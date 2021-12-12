@@ -1,40 +1,46 @@
 # Template file for 'makemkv-oss'
-# Generated with xnew
 pkgname=makemkv-oss
 version=1.16.5beta
 _dist_version=1.16.5
-revision=1
+revision=2
 wrksrc=${pkgname}-${_dist_version}
-archs="i686 x86_64"
+archs="i686 x86_64 armv6l armv7l aarch64"
 build_style=gnu-configure
-configure_args="--disable-qt4 --with-pic"
+configure_args="--with-pic"
 hostmakedepends="pkg-config"
-makedepends="openssl-devel zlib-devel expat-devel libavcodec ffmpeg-devel MesaLib-devel qt5-devel"
-depends="openssl zlib expat libavcodec ffmpeg qt5 libbluray"
-short_desc="A program to convert or backup optical discs, including encrypted Blu-Rays (OSS package)"
+makedepends="openssl-devel zlib-devel expat-devel ffmpeg-devel MesaLib-devel qt5-devel"
+short_desc="A program to backup optical discs, including encrypted Blu-Rays (OSS package)"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
-license="LGPL-2.1-or-later,custom:MakeMKV"
+license="LGPL-2.1-or-later,GPL-2.0-only,custom:MakeMKV"
 homepage="https://www.makemkv.com/"
 distfiles="https://www.makemkv.com/download/makemkv-oss-${_dist_version}.tar.gz"
 checksum=e58e34b3ce95462bc38a242a120692c2b4e56c5a98e57cce372931ff486c3b8c
-nocross=yes # cross fails for a lot of reasons, though all native builds work
+#nocross=yes
 
 post_install() {
+
 	vlicense License.txt
+	vinstall ${FILESDIR}/makemkv.README.voidlinux 644 usr/share/doc/makemkv
+
 }
 
 
 makemkv-libaacs_package() {
+
 	short_desc="Symlinks to expose MakeMKV's decryption to the system"
 	version=1.16.5beta
-	revision=1
+	revision=2
 	depends="${sourcepkg}"
 	conflicts="libaacs" # and libbdplus
 	shlib_provides="libaacs.so.0 libbdplus.so.0"
 
 	pkg_install() {
+
 		mkdir -p ${PKGDESTDIR}/usr/lib
 		ln -sf libmmbd.so.0 ${PKGDESTDIR}/usr/lib/libaacs.so.0
 		ln -sf libmmbd.so.0 ${PKGDESTDIR}/usr/lib/libbdplus.so.0
+
+		vinstall ${FILESDIR}/makemkv-libaacs.README.voidlinux 644 usr/share/doc/makemkv
+
 	}
 }

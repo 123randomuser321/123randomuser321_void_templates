@@ -1,0 +1,4 @@
+For MakeMKV to interact with optical drives, the 'sg' module needs to be loaded;
+e.g.:
+
+modprobe sg

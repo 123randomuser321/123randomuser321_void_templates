@@ -1,2 +1,1 @@
-Bear in mind that, should the license for MakeMKV expire, programs will no
-longer be able to use its decryption.
+Please read the docs at /usr/share/doc/makemkv/* !
