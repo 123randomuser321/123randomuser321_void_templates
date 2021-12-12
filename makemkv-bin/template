@@ -13,6 +13,7 @@ license="GPL-2.0-or-later,custom:MakeMKV"
 homepage="https://www.makemkv.com/"
 distfiles="https://www.makemkv.com/download/makemkv-bin-${_dist_version}.tar.gz"
 checksum=a06e1ef1e2442b8490b783030c5c16cac2d6404525632234c04d032961f724f8
+nocross=yes # this is an insane story, go look at the Makefile
 
 
 case $XBPS_TARGET_MACHINE in
