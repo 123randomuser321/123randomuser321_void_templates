@@ -6,13 +6,12 @@ revision=1
 _buildcommit=64b502aad36a22a98e7adf69a1293b524e571125
 build_style=cmake
 configure_args="-DCMAKE_BUILD_TYPE=Release -DENABLE_FFMPEG_AUDIO_DECODER=ON"
-hostmakedepends="git"
+hostmakedepends="git qt5-host-tools"
 makedepends="SDL2-devel qt5-devel qt5-multimedia-devel fdk-aac-devel ffmpeg-devel alsa-lib-devel boost-devel"
 short_desc="A Nintendo 3DS Emulator"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://citra-emu.org/"
-nocross=yes # they fail
 
 
 do_fetch() {

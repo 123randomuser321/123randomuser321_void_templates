@@ -7,7 +7,7 @@ wrksrc=${pkgname}-${_dist_version}
 archs="i686 x86_64 armv6l armv7l aarch64"
 build_style=gnu-configure
 configure_args="--with-pic"
-hostmakedepends="pkg-config"
+hostmakedepends="pkg-config qt5-host-tools"
 makedepends="openssl-devel zlib-devel expat-devel ffmpeg-devel MesaLib-devel qt5-devel"
 short_desc="A program to backup optical discs, including encrypted Blu-Rays (OSS package)"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
@@ -15,7 +15,6 @@ license="LGPL-2.1-or-later,GPL-2.0-only,custom:MakeMKV"
 homepage="https://www.makemkv.com/"
 distfiles="https://www.makemkv.com/download/makemkv-oss-${_dist_version}.tar.gz"
 checksum=e58e34b3ce95462bc38a242a120692c2b4e56c5a98e57cce372931ff486c3b8c
-#nocross=yes
 
 post_install() {
 
