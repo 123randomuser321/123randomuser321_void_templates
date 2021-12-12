@@ -1,0 +1,9 @@
+--- a/Makefile	2021-12-12 15:08:35.248441068 +0100
++++ b/Makefile	2021-12-12 16:31:17.711405837 +0100
+@@ -1,5 +1,5 @@
+ 
+-ARCH=$(shell uname -m)
++ARCH=armv6l
+ DESTDIR=
+ PREFIX=/usr
+ 
