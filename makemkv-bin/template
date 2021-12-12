@@ -3,26 +3,33 @@
 pkgname=makemkv-bin
 version=1.16.5beta
 _dist_version=1.16.5
-revision=1
+revision=2
 wrksrc=${pkgname}-${_dist_version}
-archs="i686 x86_64" # there's also arm, that will be done later
+archs="i686 x86_64 armv6l armv7l aarch64"
 build_style=gnu-makefile
-depends="makemkv-oss"
-short_desc="A program to convert or backup optical discs, including encrypted Blu-Rays (binary package)"
+short_desc="A program to backup optical discs, including encrypted Blu-Rays (binary package)"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="GPL-2.0-or-later,custom:MakeMKV"
 homepage="https://www.makemkv.com/"
 distfiles="https://www.makemkv.com/download/makemkv-bin-${_dist_version}.tar.gz"
 checksum=a06e1ef1e2442b8490b783030c5c16cac2d6404525632234c04d032961f724f8
-nopie_files="/usr/bin/makemkvcon"
-nostrip=yes
-skiprdeps="/usr/bin/makemkvcon"
+
+
+case $XBPS_TARGET_MACHINE in
+
+	i686|x86_64) nopie_files="/usr/bin/makemkvcon" ;;
+
+esac
 
 pre_build() {
+
 	mkdir -p tmp
 	echo accepted > tmp/eula_accepted
+
 }
 
 post_install() {
+
 	vlicense src/eula_en_linux.txt
+
 }
