@@ -22,14 +22,6 @@ case $XBPS_TARGET_MACHINE in
 esac
 
 
-do_patch() {
-	
-	# an inane fix for an inane problem
-	patch -s -Np1 -i ${FILESDIR}/workaround_${XBPS_TARGET_MACHINE}_cross.patch
-
-}
-
-
 pre_build() {
 
 	mkdir -p tmp
