@@ -1,0 +1,25 @@
+# Template file for 'amf-headers'
+# Shamelessly ripped from:
+#https://github.com/archlinux/svntogit-packages/blob/packages/amf-headers/trunk/PKGBUILD
+pkgname=amf-headers
+version=1.4.23
+revision=1
+archs="x86_64" # mirrors amf-amdgpu-pro
+wrksrc=AMF-${version}
+build_style=meta
+short_desc="GPUOpen Advanced Media Framework headers"
+maintainer="Sembo Sadur <labmailssadur@gmail.com>"
+license="MIT"
+homepage="https://gpuopen.com/"
+distfiles="https://github.com/GPUOpen-LibrariesAndSDKs/AMF/archive/refs/tags/v${version}.tar.gz"
+checksum=7c8a5c91bca54e257258e4efcc61925921f2efe432efd34cf77dd9dc1803c38a
+
+
+do_install() {
+	
+	mkdir -p ${DESTDIR}/usr/include/AMF # Handbrake uses this path
+	cp -r amf/public/include/* ${DESTDIR}/usr/include/AMF
+	
+	vlicense amf/doc/Readme.txt license # Includes Changelog
+
+}
