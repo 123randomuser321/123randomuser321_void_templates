@@ -1,0 +1,43 @@
+# Template file for 'amf-amdgpu-pro'
+pkgname=amf-amdgpu-pro
+version=1.4.23
+_distver=21.40.1 # mirrors amdgpu-pro
+_magicnum=1337797
+revision=1
+archs="x86_64"
+wrksrc=${pkgname}-${version}
+create_wrksrc=yes
+build_style=meta
+hostmakedepends="binutils tar xz"
+depends="vulkan-amdgpu-pro>=${_distver}"
+short_desc="Proprietary AMDGPU-Pro stack - Advanced Media Framework"
+maintainer="Sembo Sadur <labmailssadur@gmail.com>"
+license="custom:AMDGPU-Pro"
+homepage="https://www.amd.com/en/support"
+distfiles="https://repo.radeon.com/amdgpu/${_distver}/ubuntu/pool/proprietary/a/${pkgname}/${pkgname}_${version}-${_magicnum}_amd64.deb"
+checksum=a9e57acdd24bf15d08e4dc930689ef4f97dd73ae6159e586c9a649691d19ab0b
+restricted=yes
+
+
+_lib64="opt/amdgpu-pro/lib/x86_64-linux-gnu"
+
+
+do_extract() {
+	
+	ar x --output ${wrksrc} \
+	${XBPS_SRCDISTDIR}/${pkgname}-${version}/${pkgname}_${version}-${_magicnum}_amd64.deb
+
+	tar xpf data.tar.xz
+
+}
+
+
+do_install() {
+	
+	vinstall ${_lib64}/libamfrt64.so 755 usr/lib
+	vinstall ${_lib64}/libamfrt64.so.1 755 usr/lib
+	vinstall ${_lib64}/libamfrt64.so.1.4.23 755 usr/lib
+
+	vlicense usr/share/doc/${pkgname}/copyright
+
+}

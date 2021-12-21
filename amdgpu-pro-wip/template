@@ -1,0 +1,65 @@
+# Template file for 'amdgpu-pro-wip'
+# References:
+# Inspired by:
+# https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=amdgpu-pro-installer
+pkgname=amdgpu-pro-wip
+_basename=amdgpu-pro
+version=21.40.1
+revision=1
+archs="x86_64"
+wrksrc=${_basename}-${version}
+create_wrksrc=yes
+build_style=meta
+hostmakedepends="binutils tar xz sed"
+_basedesc="Proprietary AMDGPU-Pro stack"
+short_desc="${_basedesc} (placeholder)"
+maintainer="Sembo Sadur <labmailssadur@gmail.com>"
+license="Public Domain"
+homepage="https://www.amd.com/en/support"
+_magicnum=1337797
+_x64=amd64.deb
+_end64=${_basename}_${version}-${_magicnum}_${_x64}
+_basedist="https://repo.radeon.com/amdgpu/${version}/ubuntu/pool/proprietary"
+distfiles="${_basedist}/v/vulkan-${_basename}/vulkan-${_end64}"
+checksum="9844655bd47bdd67d279a2cf983b6b93c4a48c85d91f85f1dfec562c68ec8663"
+restricted=yes
+
+
+_lib64="opt/amdgpu-pro/lib/x86_64-linux-gnu"
+_etc="opt/amdgpu-pro/etc"
+_doc="usr/share/doc"
+
+
+do_extract() {
+	
+	for f in ${XBPS_SRCDISTDIR}/${pkgname}-${version}/*.deb; do
+
+		ar x --output ${wrksrc} ${f}
+
+		tar xpf data.tar.xz
+
+	done
+
+}
+
+
+vulkan-amdgpu-pro_package() {
+	
+	short_desc="${_basedesc} - Vulkan driver"
+	conflicts="amdvlk"
+	license="custom:AMDGPU-Pro"
+
+	pkg_install() {
+
+		vinstall ${_lib64}/amdvlk64.so 755 usr/lib
+		vinstall ${_lib64}/amdvlk64.so.1.0 755 usr/lib
+
+		sed -i "s#/opt/amdgpu-pro/lib/x86_64-linux-gnu/amdvlk64.so#/usr/lib/amdvlk64.so#" ${_etc}/vulkan/icd.d/amd_icd64.json
+
+		vinstall ${_etc}/vulkan/icd.d/amd_icd64.json 644 usr/share/vulkan/icd.d
+
+		vlicense ${_doc}/vulkan-${_basename}/copyright
+
+	}
+
+}
