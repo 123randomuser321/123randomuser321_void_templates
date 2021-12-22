@@ -8,7 +8,7 @@ archs="x86_64"
 wrksrc=${pkgname}-${version}
 create_wrksrc=yes
 build_style=meta
-hostmakedepends="binutils tar xz"
+hostmakedepends="tar xz"
 depends="vulkan-amdgpu-pro>=${_distver}"
 short_desc="Proprietary AMDGPU-Pro stack - Advanced Media Framework"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
@@ -34,9 +34,9 @@ do_extract() {
 
 do_install() {
 	
-	vinstall ${_lib64}/libamfrt64.so 755 usr/lib
-	vinstall ${_lib64}/libamfrt64.so.1 755 usr/lib
 	vinstall ${_lib64}/libamfrt64.so.1.4.23 755 usr/lib
+	ln -s libamfrt64.so.1.4.23 ${DESTDIR}/usr/lib/libamfrt64.so.1
+	ln -s libamfrt64.so.1 ${DESTDIR}/usr/lib/libamfrt64.so
 
 	vlicense usr/share/doc/${pkgname}/copyright
 

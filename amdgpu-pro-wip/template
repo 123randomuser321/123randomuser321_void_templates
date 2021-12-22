@@ -51,8 +51,8 @@ vulkan-amdgpu-pro_package() {
 
 	pkg_install() {
 
-		vinstall ${_lib64}/amdvlk64.so 755 usr/lib
 		vinstall ${_lib64}/amdvlk64.so.1.0 755 usr/lib
+		ln -s amdvlk64.so.1.0 ${PKGDESTDIR}/usr/lib/amdvlk64.so
 
 		sed -i "s#/opt/amdgpu-pro/lib/x86_64-linux-gnu/amdvlk64.so#/usr/lib/amdvlk64.so#" ${_etc}/vulkan/icd.d/amd_icd64.json
 
