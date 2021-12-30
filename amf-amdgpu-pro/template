@@ -1,9 +1,9 @@
 # Template file for 'amf-amdgpu-pro'
 pkgname=amf-amdgpu-pro
 version=1.4.23
-_distver=21.40.1 # mirrors amdgpu-pro
-_magicnum=1337797
-revision=1
+_distver=21.40.2 # mirrors amdgpu-pro
+_magicnum=1350682 # mirrors amdgpu-pro
+revision=2
 archs="x86_64"
 wrksrc=${pkgname}-${version}
 create_wrksrc=yes
@@ -15,7 +15,7 @@ maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="custom:AMDGPU-Pro"
 homepage="https://www.amd.com/en/support"
 distfiles="https://repo.radeon.com/amdgpu/${_distver}/ubuntu/pool/proprietary/a/${pkgname}/${pkgname}_${version}-${_magicnum}_amd64.deb"
-checksum=a9e57acdd24bf15d08e4dc930689ef4f97dd73ae6159e586c9a649691d19ab0b
+checksum=0a9e65112e5dbf4a6b7b81d7078381a931657bb803f66ce005ebd4946e423f7f
 restricted=yes
 
 

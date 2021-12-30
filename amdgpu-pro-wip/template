@@ -4,7 +4,7 @@
 # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=amdgpu-pro-installer
 pkgname=amdgpu-pro-wip
 _basename=amdgpu-pro
-version=21.40.1
+version=21.40.2
 revision=1
 archs="x86_64"
 wrksrc=${_basename}-${version}
@@ -16,12 +16,12 @@ short_desc="${_basedesc} (placeholder)"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="Public Domain"
 homepage="https://www.amd.com/en/support"
-_magicnum=1337797
+_magicnum=1350682 # Focal Fossa build
 _x64=amd64.deb
 _end64=${_basename}_${version}-${_magicnum}_${_x64}
 _basedist="https://repo.radeon.com/amdgpu/${version}/ubuntu/pool/proprietary"
 distfiles="${_basedist}/v/vulkan-${_basename}/vulkan-${_end64}"
-checksum="9844655bd47bdd67d279a2cf983b6b93c4a48c85d91f85f1dfec562c68ec8663"
+checksum="a01d58a5efb60bf4d98c9a16814dcb7641567e5b2eca87fef0d528d2ee59d1ae"
 restricted=yes
 
 
