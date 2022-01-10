@@ -1,5 +1,5 @@
-# Template file for 'flips'
-pkgname=flips
+# Template file for 'flips-git'
+pkgname=flips-git
 version=2021.12.05
 revision=1
 _buildcommit=96df78fd733ebc56d64bcfcaee7d127bfd6643d6 # change as you please
