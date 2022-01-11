@@ -4,7 +4,7 @@
 pkgname=amf-headers
 version=1.4.23
 revision=1
-archs="x86_64" # mirrors amf-amdgpu-pro
+archs="x86_64"
 wrksrc=AMF-${version}
 build_style=meta
 short_desc="GPUOpen Advanced Media Framework headers"
@@ -20,6 +20,6 @@ do_install() {
 	mkdir -p ${DESTDIR}/usr/include/AMF # Handbrake uses this path
 	cp -r amf/public/include/* ${DESTDIR}/usr/include/AMF
 	
-	vlicense amf/doc/Readme.txt license # Includes Changelog
+	vlicense LICENSE.txt
 
 }
