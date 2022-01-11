@@ -3,6 +3,7 @@
 # Inspired by:
 # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=amdgpu-pro-installer
 pkgname=amdgpu-pro
+_basename=amdgpu-pro
 version=21.40.2
 revision=1
 archs="x86_64"
@@ -15,12 +16,15 @@ short_desc="${_basedesc} - meta package"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="Public Domain"
 homepage="https://www.amd.com/en/support"
+_amfver=1.4.23
 _magicnum=1350682 # Focal Fossa build
 _x64=amd64.deb
 _end64=${pkgname}_${version}-${_magicnum}_${_x64}
 _basedist="https://repo.radeon.com/amdgpu/${version}/ubuntu/pool/proprietary"
-distfiles="${_basedist}/v/vulkan-${pkgname}/vulkan-${_end64}"
-checksum="a01d58a5efb60bf4d98c9a16814dcb7641567e5b2eca87fef0d528d2ee59d1ae"
+distfiles="${_basedist}/v/vulkan-${pkgname}/vulkan-${_end64} \
+${_basedist}/a/amf-${pkgname}/amf-${pkgname}_${_amfver}-${_magicnum}_${_x64}"
+checksum="a01d58a5efb60bf4d98c9a16814dcb7641567e5b2eca87fef0d528d2ee59d1ae \
+0a9e65112e5dbf4a6b7b81d7078381a931657bb803f66ce005ebd4946e423f7f"
 restricted=yes
 
 
@@ -57,8 +61,26 @@ vulkan-amdgpu-pro_package() {
 
 		vinstall ${_etc}/vulkan/icd.d/amd_icd64.json 644 usr/share/vulkan/icd.d
 
-		vlicense ${_doc}/vulkan-${pkgname}/copyright
+		vlicense ${_doc}/vulkan-${_basename}/copyright
 
 	}
 
+}
+
+
+amf-amdgpu-pro_package() {
+	
+	short_desc="${_basedesc} - AMF Backend"
+	depends="vulkan-${_basename}>=${version}_${revision}"
+	license="custom:AMDGPU-Pro"
+
+	pkg_install() {
+
+		vinstall ${_lib64}/libamfrt64.so.1.4.23 755 usr/lib
+		ln -s libamfrt64.so.1.4.23 ${PKGDESTDIR}/usr/lib/libamfrt64.so.1
+		ln -s libamfrt64.so.1 ${PKGDESTDIR}/usr/lib/libamfrt64.so
+
+		vlicense ${_doc}/amf-${_basename}/copyright
+
+	}
 }
