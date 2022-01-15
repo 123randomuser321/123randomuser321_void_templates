@@ -1,0 +1,9 @@
+#!/bin/sh
+# Since mangadesk stores its downloads relative to the working dir,
+# we change dirs to the users home, assuring that the dir is writeable
+# and our relative path forced in do_patch() makes sense.
+#
+# This can probably be done in a better way, but it'll do for now.
+
+cd $HOME
+exec /usr/libexec/mangadesk

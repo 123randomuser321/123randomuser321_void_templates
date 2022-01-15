@@ -1,0 +1,11 @@
+--- a/app/core/config.go	2022-01-15 19:19:34.139231088 +0100
++++ b/app/core/config.go	2022-01-15 19:20:01.308759637 +0100
+@@ -12,7 +12,7 @@
+ 
+ // Defaults for user configuration.
+ var (
+-	downloadDir     = "downloads"
++	downloadDir     = "Downloads/mangadesk"
+ 	languages       = []string{"en"}
+ 	downloadQuality = "data"
+ 	zipType         = "zip"
