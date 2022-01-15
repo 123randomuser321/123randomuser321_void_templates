@@ -4,6 +4,84 @@
 # and our relative path forced in do_patch() makes sense.
 #
 # This can probably be done in a better way, but it'll do for now.
+#
+# Also: I am new to shell, so please call out any problems with this.
 
-cd $HOME
+if [ -z "$MANGADESK_DIR" ]; then
+
+	MANGADESK_DIR=$HOME
+
+fi
+
+
+show_help() {
+	cat << _EOF
+	[MANGADESK_DIR] mangadesk: [options] [arguments]
+
+
+	Evironment:
+
+	MANGADESK_DIR=<wrkdir>
+		As an alternative to the -d option, the directory from which
+		Mangadesk will be executed can be specified via the variable
+		MANGADESK_DIR.
+
+
+	Options:
+
+	-d 	<wrkdir>
+		This specifies the directory from which mangadesk will be run.
+
+	-h
+		Print this message.
+
+_EOF
+}
+
+while getopts ":d:h" opt; do
+
+	case $opt in
+
+		h)
+			show_help
+			exit 0
+			;;
+
+		d)
+			MANGADESK_DIR=$OPTARG
+			DIR_SET=yes
+			;;
+
+		:)
+			echo "-$OPTARG requires a directory"
+			exit 1
+			;;
+
+		\?)
+			echo "Invalid option: -$OPTARG" >&2
+			show_help
+			exit 1
+			;;
+
+	esac
+
+done
+
+
+if [ ! -d "$MANGADESK_DIR" ]; then
+
+	echo "Directory $MANGADESK_DIR does not exist"
+
+	if [ -n "$DIR_SET" ]; then
+
+		echo "Perhaps you mistyped?"
+
+	fi
+
+	exit 1
+
+fi
+
+
+cd $MANGADESK_DIR
 exec /usr/libexec/mangadesk
