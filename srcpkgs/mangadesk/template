@@ -18,7 +18,7 @@ post_install() {
 	
 	mkdir -p ${DESTDIR}/usr/share/doc/${pkgname}
 	vinstall app/core/CONFIG.md 0644 usr/share/doc/${pkgname}
-	vsed -i ${DESTDIR}/usr/share/doc/${pkgname}/CONFIG.md -e "s#titled \`downloads\`#titled \`Downloads/mangadesk\`#"
+	vsed -i ${DESTDIR}/usr/share/doc/${pkgname}/CONFIG.md -e "s#titled \`downloads\`#titled \`.mangadesk\`#"
 
 	sed -n '75,88p' README.md > KEYBINDS.md
 	vinstall KEYBINDS.md 0644 usr/share/doc/${pkgname}

@@ -5,7 +5,7 @@
  // Defaults for user configuration.
  var (
 -	downloadDir     = "downloads"
-+	downloadDir     = "Downloads/mangadesk"
++	downloadDir     = ".mangadesk"
  	languages       = []string{"en"}
  	downloadQuality = "data"
  	zipType         = "zip"
