@@ -7,7 +7,7 @@ Just notify me, preferably per email (this is purely so I may notice, this is in
 
 Currently existing templates:
 
-- amdgpu-pro-wip (heavily wip)
+- amdgpu-pro (heavily wip)
 
 - amf-headers (Needed by FFMPEG etc to enable VCE HW-Encoding)
 
