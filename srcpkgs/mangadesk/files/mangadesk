@@ -73,11 +73,11 @@ done
 
 if [ ! -d "$MANGADESK_DIR" ]; then
 
-	echo "Directory $MANGADESK_DIR does not exist"
+	echo "Directory $MANGADESK_DIR does not exist" >&2
 
 	if [ -n "$DIR_SET" ]; then
 
-		echo "Perhaps you mistyped?"
+		echo "Perhaps you mistyped?" >&2
 
 	fi
 

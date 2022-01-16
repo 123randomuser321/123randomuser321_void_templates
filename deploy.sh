@@ -48,7 +48,7 @@ done
 
 if [ ! -e "$(pwd)/deploy.sh" ]; then
 
-	echo "Please execute the script from its original directory"
+	echo "Please execute the script from its original directory" >&2
 	exit 1
 
 fi
@@ -63,15 +63,15 @@ fi
 
 if [ ! -d "$VOID_DIR" ]; then
 
-	echo "non-existent directory"
+	echo "non-existent directory" >&2
 	exit 1
 
 else
 
 	if [ ! -e "$VOID_DIR/xbps-src" ]; then
 
-		echo "xbps-src does not exist in given directory"
-		echo "maybe you mistyped?"
+		echo "xbps-src does not exist in given directory" >&2
+		echo "maybe you mistyped?" >&2
 		exit 1
 
 	fi
@@ -82,4 +82,4 @@ fi
 cat common/shlibs.123 >> "$VOID_DIR/common/shlibs"
 cp -r srcpkgs "$VOID_DIR"
 
-echo "Don't forget to git-clean and git-reset your directory when you're done!"
+echo "Don't forget to git-clean and git-reset your directory when you're done!" >&1
