@@ -37,16 +37,32 @@ show_help() {
 	-h
 		Print this message.
 
+	-v
+		Print version information
+
 _EOF
 
 }
 
-while getopts ":d:h" opt; do
+
+show_ver() {
+
+	echo $(xbps-query -S mangadesk --property=pkgver) >&1
+
+}
+
+
+while getopts ":d:hv" opt; do
 
 	case $opt in
 
 		h)
 			show_help
+			exit 0
+			;;
+
+		v)
+			show_ver
 			exit 0
 			;;
 
