@@ -3,9 +3,6 @@
 # we change dirs to the users home, assuring that the dir is writeable
 # and our relative path forced in do_patch() makes sense.
 #
-# This can probably be done in a better way, but it'll do for now.
-#
-# Also: I am new to shell, so please call out any problems with this.
 
 
 if [ -z "$MANGADESK_DIR" ]; then
@@ -13,6 +10,9 @@ if [ -z "$MANGADESK_DIR" ]; then
 	MANGADESK_DIR="$HOME"
 
 fi
+
+
+DIR_SET=""
 
 
 show_help() {
