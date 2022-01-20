@@ -7,12 +7,4 @@ Just notify me, preferably per email (this is purely so I may notice, this is in
 
 Currently existing templates:
 
-- amdgpu-pro (heavily wip)
-
-- amf-headers (Needed by FFMPEG etc to enable VCE HW-Encoding)
-
-- citra (manual editing needed) (bad, will be reworked)
-
-- fre:ac (written as freac; plus its deps smooth and BoCA, and their -devel pkgs)
-
-- makemkv (meta, -bin, -oss, -libaacs)
+(A lot of reworking happening)
