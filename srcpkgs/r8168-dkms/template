@@ -1,0 +1,34 @@
+# Template file for 'r8168-dkms'
+pkgname=r8168-dkms
+_basename=r8168
+version=8.049.02
+revision=1
+wrksrc=${_basename}-${version}
+build_style=meta
+hostmakedepends=""
+makedepends=""
+depends="dkms xbps-triggers"
+short_desc="Linux device driver for Realtek ethernet (r8168)"
+maintainer="Sembo Sadur <labmailssadur@gmail.com>"
+license="GPL-2.0-only"
+homepage="https://github.com/mtorromeo/r8168"
+distfiles="${homepage}/archive/refs/tags/${version}.tar.gz"
+checksum=2b12d932e976f8f74b8d9545744c04beb4676dd7bc1d032dde51347ed1d8be24
+
+dkms_modules="${_basename} ${version}"
+triggers="dkms initramfs-regenerate"
+
+
+do_install() {
+
+ mkdir -p ${DESTDIR}/usr/src/${_basename}-${version}/src
+
+ cp -r src ${DESTDIR}/usr/src/${_basename}-${version}
+
+ vinstall ${FILESDIR}/dkms.conf 0644 usr/src/${_basename}-${version}
+
+ vsed -i ${DESTDIR}/usr/src/${_basename}-${version}/dkms.conf -e "s/__VERSION/${version}/g"
+
+ vinstall ${FILESDIR}/${pkgname}.conf 0644 usr/lib/modprobe.d
+
+}
