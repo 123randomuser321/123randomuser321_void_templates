@@ -2,7 +2,6 @@
 # Since mangadesk stores its downloads relative to the working dir,
 # we change dirs to the users home, assuring that the dir is writeable
 # and our relative path forced in do_patch() makes sense.
-#
 
 
 if [ -z "$MANGADESK_DIR" ]; then
@@ -10,9 +9,6 @@ if [ -z "$MANGADESK_DIR" ]; then
 	MANGADESK_DIR="$HOME"
 
 fi
-
-
-DIR_SET=""
 
 
 show_help() {
@@ -45,13 +41,6 @@ _EOF
 }
 
 
-show_ver() {
-
-	echo $(xbps-query -S mangadesk --property=pkgver) >&1
-
-}
-
-
 while getopts ":d:hv" opt; do
 
 	case $opt in
@@ -62,13 +51,12 @@ while getopts ":d:hv" opt; do
 			;;
 
 		v)
-			show_ver
+			echo __VERSION
 			exit 0
 			;;
 
 		d)
 			MANGADESK_DIR=$OPTARG
-			DIR_SET=yes
 			;;
 
 		:)
@@ -90,13 +78,6 @@ done
 if [ ! -d "$MANGADESK_DIR" ]; then
 
 	echo "Directory $MANGADESK_DIR does not exist" >&2
-
-	if [ -n "$DIR_SET" ]; then
-
-		echo "Perhaps you mistyped?" >&2
-
-	fi
-
 	exit 1
 
 fi

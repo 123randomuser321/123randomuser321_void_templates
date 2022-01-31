@@ -1,6 +1,6 @@
 # Template file for 'mangadesk'
 pkgname=mangadesk
-version=0.7.5
+version=0.7.6
 revision=1
 build_style=go
 go_import_path="github.com/darylhjd/mangadesk"
@@ -9,7 +9,7 @@ maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="MIT"
 homepage="https://github.com/darylhjd/mangadesk"
 distfiles="${homepage}/archive/refs/tags/v${version}.tar.gz"
-checksum=d9ed5151028cbfb4562ba01047cf6d07f8b299f3dec33f60105823dbc5abe590
+checksum=4d4f0c36435fbc3c791e923fbfa2408cc46c8d6fab7126046fd1cc9f95479d15
 
 
 post_install() {
@@ -26,5 +26,6 @@ post_install() {
 	mkdir -p ${DESTDIR}/usr/libexec
 	mv ${DESTDIR}/usr/bin/mangadesk ${DESTDIR}/usr/libexec/
 	vbin ${FILESDIR}/mangadesk
-
+	vsed -i ${DESTDIR}/usr/bin/mangadesk -e s/__VERSION/${version}/
+	
 }
