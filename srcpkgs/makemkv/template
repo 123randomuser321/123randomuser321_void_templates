@@ -1,7 +1,7 @@
 # Template file for 'makemkv'
 pkgname=makemkv
-version=1.16.5beta
-revision=2
+version=1.16.7beta
+revision=1
 archs="i686 x86_64 armv6l armv7l aarch64"
 build_style=meta
 depends="makemkv-oss makemkv-bin"
