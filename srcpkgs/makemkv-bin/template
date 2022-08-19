@@ -1,8 +1,8 @@
 # Template file for 'makemkv-bin'
 # Generated with xnew
 pkgname=makemkv-bin
-version=1.17.0beta
-_dist_version=1.17.0
+version=1.17.1beta
+_dist_version=1.17.1
 revision=1
 wrksrc=${pkgname}-${_dist_version}
 archs="i686 x86_64 armv6l armv7l aarch64"
@@ -12,7 +12,7 @@ maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="GPL-2.0-or-later,custom:MakeMKV"
 homepage="https://www.makemkv.com/"
 distfiles="https://www.makemkv.com/download/makemkv-bin-${_dist_version}.tar.gz"
-checksum=e277d75722aede64ac1b564969c7d64608e00591b17068dc7a88358e7a03e2c0
+checksum=0784908b07f9fc87307a0f958105b7e2d37f5f10c0ef1a1280854e7d7c06b1f3
 
 
 case $XBPS_TARGET_MACHINE in

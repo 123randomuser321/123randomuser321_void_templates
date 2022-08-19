@@ -1,7 +1,7 @@
 # Template file for 'makemkv-oss'
 pkgname=makemkv-oss
-version=1.17.0beta
-_dist_version=1.17.0
+version=1.17.1beta
+_dist_version=1.17.1
 revision=1
 wrksrc=${pkgname}-${_dist_version}
 archs="i686 x86_64 armv6l armv7l aarch64"
@@ -14,7 +14,7 @@ maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="LGPL-2.1-or-later,GPL-2.0-only,custom:MakeMKV"
 homepage="https://www.makemkv.com/"
 distfiles="https://www.makemkv.com/download/makemkv-oss-${_dist_version}.tar.gz"
-checksum=ede75c7cc05dbef9d2e5c55d340dc090f58b25b0c809e2345c2554f0b20cf75f
+checksum=0d572b1b937d97275cb75d71a142b3d555428aebd53a64161a500fda7ae766fe
 
 
 post_install() {
@@ -28,7 +28,7 @@ post_install() {
 makemkv-libaacs_package() {
 
 	short_desc="Symlinks to expose MakeMKV's decryption to the system"
-	version=1.17.0beta
+	version=1.17.1beta
 	revision=1
 	depends="${sourcepkg}"
 	conflicts="libaacs" # and libbdplus
