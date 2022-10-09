@@ -1,0 +1,4 @@
+New version of U-Boot firmware can be flashed to your microSD card (mmcblk1)
+or eMMC module (mmcblk2).  You can do that by running these two commands:
+# dd if=/boot/idbloader.img of=/dev/mmcblkX seek=64 conv=notrunc,fsync
+# dd if=/boot/u-boot.itb of=/dev/mmcblkX seek=16384 conv=notrunc,fsync

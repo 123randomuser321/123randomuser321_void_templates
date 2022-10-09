@@ -1,0 +1,102 @@
+# Template file for 'rockpro64-u-boot'
+# This closely mirrors Manjaro-ARM's PKGBUILD
+# https://gitlab.manjaro.org/manjaro-arm/packages/core/uboot-rockpro64/-/blob/4e0d1437b053c12652abfe06223b9f80c45618fd/PKGBUILD
+pkgname=rockpro64-u-boot
+version=2022.04
+revision=1
+_tfaver=2.6
+archs="aarch64*"
+wrksrc=${pkgname}-${version}
+create_wrksrc=yes
+build_style=gnu-makefile
+make_dirs="/boot/extlinux 0755 root root"
+hostmakedepends="tar cross-arm-none-eabi-gcc bison flex openssl-devel python3 dtc bc"
+short_desc="U-Boot for Pine64 RockPro64"
+maintainer="Sembo Sadur <labmailssadur@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="http://www.denx.de/wiki/U-Boot/WebHome"
+distfiles="ftp://ftp.denx.de/pub/u-boot/u-boot-${version}.tar.bz2 \
+			https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/snapshot/trusted-firmware-a-${_tfaver}.tar.gz"
+checksum="68e065413926778e276ec3abd28bb32fa82abaa4a6898d570c1f48fbdb08bcd0 \
+			4e59f02ccb042d5d18c89c849701b96e6cf4b788709564405354b5d313d173f7"
+
+
+# shamelessly copied from Manjaro
+update_config() {
+    if ! grep -q "^$1=$2$" .config; then
+      if grep -q "^# $1 is not set$" .config; then
+        sed -i -e "s/^# $1 is not set$/$1=$2/g" .config
+      elif grep -q "^$1=" .config; then
+        sed -i -e "s/^$1=.*/$1=$2/g" .config
+      else
+        echo "$1=$2" >> .config
+      fi
+    fi
+  }
+
+
+do_extract() {
+	
+	rm -f ${XBPS_SRCDISTDIR}/${pkgname}-${version}/*.part
+
+	for f in ${XBPS_SRCDISTDIR}/${pkgname}-${version}/*; do
+
+		tar xpf ${f}
+
+	done
+
+}
+
+
+do_patch() {
+	
+	cd ${wrksrc}/u-boot-${version}
+
+	patch -Np1 <${FILESDIR}/patches/u-boot/*.patch
+
+}
+
+
+do_build() {
+	
+	case ${XBPS_MACHINE} in
+	
+		aarch64*) ;;
+		*) export CROSS_COMPILE=aarch64-linux-gnu- ;;
+	
+	esac
+
+	unset CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
+	# hardening seems to break the build
+	# aarch64-linux-gnu-ld.bfd: unrecognized option '-Wl,-z,relro'
+
+
+	cd ${wrksrc}/trusted-firmware-a-${_tfaver}
+
+	make PLAT=rk3399
+	cp build/rk3399/release/bl31/bl31.elf ../u-boot-${version}
+
+
+	cd ${wrksrc}/u-boot-${version}
+
+	make rockpro64-rk3399_defconfig
+
+	update_config 'CONFIG_IDENT_STRING' '"Void Linux"'
+	update_config 'CONFIG_OF_LIBFDT_OVERLAY' 'y'
+	update_config 'CONFIG_SPL_MMC_SDHCI_SDMA' 'n'
+
+	make EXTRAVERSION=-${revision}
+
+}
+
+
+do_install() {
+	
+	cd ${wrksrc}/u-boot-${version}
+
+	vinstall idbloader.img 0644 boot
+	vinstall u-boot.itb 0644 boot
+
+	vdoc ${FILESDIR}/flash_instructions.README.voidlinux
+
+}
