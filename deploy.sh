@@ -3,6 +3,9 @@
 # void-packages clone
 
 
+. ./deploylist.sh
+
+
 show_help() {
 
 	cat << _EOF
@@ -78,7 +81,17 @@ else
 fi
 
 
+if [ -n "$1" ]; then
+
+	copy_specific "$VOID_DIR" "$1"
+
+else
+
+	cp -r srcpkgs "$VOID_DIR"
+
+fi
+
 cat common/shlibs.123 >> "$VOID_DIR/common/shlibs"
-cp -r srcpkgs "$VOID_DIR"
 
 echo "Don't forget to git-clean and git-reset your directory when you're done!"
+exit 0
