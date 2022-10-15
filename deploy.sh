@@ -3,7 +3,7 @@
 # void-packages clone
 
 
-. ./deploylist.sh
+deploy=
 
 
 show_help() {
@@ -52,7 +52,7 @@ done
 if [ ! -e "$(pwd)/deploy.sh" ]; then
 
 	echo "Please execute the script from its original directory"
-	exit 1
+	exit 2
 
 fi
 
@@ -67,29 +67,46 @@ fi
 if [ ! -d "$VOID_DIR" ]; then
 
 	echo "non-existent directory"
-	exit 1
+	exit 3
 
 else
 
 	if [ ! -e "$VOID_DIR/xbps-src" ]; then
 
 		echo "xbps-src does not exist in given directory"
-		exit 1
+		exit 3
 
 	fi
 
 fi
 
-
 if [ -n "$1" ]; then
 
-	copy_specific "$VOID_DIR" "$1"
+	if [ -e etc/deploylists/"$1".sh ]; then
+
+		. ./etc/deploylists/"$1".sh
+
+	elif [ -e srcpkgs/"$1" ]; then
+
+		deploy="$1"
+
+	else
+
+		echo "Unknown pkg or list"
+		exit 4
+
+	fi
+
+	cd srcpkgs
+	cp -r -t "$VOID_DIR/srcpkgs" ${deploy}
+	cd ..
 
 else
 
-	cp -r srcpkgs "$VOID_DIR"
+	cp -r srcpkgs/* "$VOID_DIR/srcpkgs"
 
 fi
+
 
 cat common/shlibs.123 >> "$VOID_DIR/common/shlibs"
 
