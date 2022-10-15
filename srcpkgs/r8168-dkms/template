@@ -1,7 +1,7 @@
 # Template file for 'r8168-dkms'
 pkgname=r8168-dkms
 _basename=r8168
-version=8.049.02
+version=8.050.03
 revision=1
 wrksrc=${_basename}-${version}
 build_style=meta
@@ -11,7 +11,7 @@ maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="GPL-2.0-only"
 homepage="https://github.com/mtorromeo/r8168"
 distfiles="${homepage}/archive/refs/tags/${version}.tar.gz"
-checksum=2b12d932e976f8f74b8d9545744c04beb4676dd7bc1d032dde51347ed1d8be24
+checksum=76f9e7c26a8ade7b01dd34060f5b17d74387f15e9b6baa6dbba8c43634a31ce6
 
 dkms_modules="${_basename} ${version}"
 triggers="dkms initramfs-regenerate"
