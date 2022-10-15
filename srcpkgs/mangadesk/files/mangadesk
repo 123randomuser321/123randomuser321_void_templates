@@ -4,13 +4,6 @@
 # and our relative path forced in do_patch() makes sense.
 
 
-if [ -z "$MANGADESK_DIR" ]; then
-
-	MANGADESK_DIR="$HOME"
-
-fi
-
-
 show_help() {
 	
 	cat << _EOF
@@ -36,6 +29,21 @@ show_help() {
 
 	-v
 		Print version information.
+
+
+	Exit codes (of the wrapper script):
+
+	0
+		Everything worked as expected.
+
+	1
+		Invalid argument.
+
+	2
+		MANGADESK_DIR was empty, and so was HOME.
+
+	3
+		MANGADESK_DIR was not a directory.
 
 _EOF
 
@@ -76,13 +84,28 @@ while getopts ":d:hv" opt; do
 done
 
 
+if [ -z "$MANGADESK_DIR" ]; then
+
+	if [ -n "$HOME" ]; then
+
+		MANGADESK_DIR="$HOME"
+
+	else
+
+		exit 2
+
+	fi
+
+fi
+
 if [ ! -d "$MANGADESK_DIR" ]; then
 
 	echo "Directory $MANGADESK_DIR does not exist"
-	exit 1
+	exit 3
 
 fi
 
 
 cd "$MANGADESK_DIR"
 exec /usr/libexec/mangadesk
+exit 0
