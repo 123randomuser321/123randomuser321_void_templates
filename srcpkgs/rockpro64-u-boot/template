@@ -69,6 +69,8 @@ do_build() {
 	unset CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
 	# hardening seems to break the build
 	# aarch64-linux-gnu-ld.bfd: unrecognized option '-Wl,-z,relro'
+	# tested with nopie=yes, still doesn't work
+	# aarch64-linux-gnu-ld.bfd: unrecognized option '-Wl,--as-needed'
 
 
 	cd ${wrksrc}/trusted-firmware-a-${_tfaver}
