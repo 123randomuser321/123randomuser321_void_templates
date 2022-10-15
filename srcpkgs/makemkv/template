@@ -16,6 +16,7 @@ short_desc="${_basedesc} - meta package"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="Public Domain"
 homepage="https://makemkv.com"
+changelog="${homepage}/download/history.html"
 distfiles="${homepage}/download/makemkv-oss-${_distver}.tar.gz \
 			${homepage}/download/makemkv-bin-${_distver}.tar.gz"
 checksum="a83f8abb3f23def0dc8783e535062a75b7df2f7612291a8a83a21f90b93f2da4 \
