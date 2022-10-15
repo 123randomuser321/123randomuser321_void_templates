@@ -40,6 +40,12 @@ do_configure() {
 	# only makemkv-oss needs to be configured and built
 	cd ${wrksrc}/makemkv-oss-${_distver}
 
+	if [ -n "$CROSS_BUILD" ]; then
+
+		_ossargs+=" --host=$XBPS_CROSS_TRIPLET --with-sysroot=$XBPS_CROSS_BASE --with-libtool-sysroot=$XBPS_CROSS_BASE"
+
+	fi
+
 	./configure ${configure_args} ${_ossargs}
 
 }
