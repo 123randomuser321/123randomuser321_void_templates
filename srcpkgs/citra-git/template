@@ -1,9 +1,9 @@
 # Template file for 'citra-git'
 pkgname=citra-git
 archs="x86_64 i686 aarch64 armv6l armv7l" # Got these from CMakeLists.txt
-version=20211209
+version=2022.10.14
 revision=1
-_buildcommit=64b502aad36a22a98e7adf69a1293b524e571125
+_buildcommit=b05b5b3bd8b973846b62dfe51b84952da756232b
 build_style=cmake
 configure_args="-DCMAKE_BUILD_TYPE=Release -DENABLE_FFMPEG_AUDIO_DECODER=ON"
 hostmakedepends="git qt5-host-tools"
