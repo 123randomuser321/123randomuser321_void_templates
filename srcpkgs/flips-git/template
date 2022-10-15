@@ -1,15 +1,9 @@
 # Template file for 'flips-git'
 pkgname=flips-git
-version=2021.12.05
+version=2022.07.16
 revision=1
-_buildcommit=96df78fd733ebc56d64bcfcaee7d127bfd6643d6 # change as you please
+_buildcommit=ce2e7ca2175b7e8bf2b8d64216887ac3747fc750 # change as you please
 build_style=gnu-makefile
-# mirror flags from make.sh (no clue if it actually accepts -O3)
-_ADDFLAGS=" -Wall -O3 -flto -fuse-linker-plugin -fomit-frame-pointer \
--fmerge-all-constants -fvisibility=hidden -fno-exceptions -fno-unwind-tables \
--fno-asynchronous-unwind-tables -ffunction-sections -fdata-sections -Wl,--gc-sections \
--fprofile-dir=obj/ -Wl,-z,relro,-z,now,--as-needed,--hash-style=gnu,--relax \
--pie -fPIE"
 hostmakedepends="pkg-config git"
 makedepends="gtk+3-devel libgomp-devel"
 short_desc="Floating IPS - patcher for IPS and BPS files"
@@ -29,6 +23,5 @@ do_fetch() {
 pre_build() {
 	
 	TARGET=gtk # needed to build for gtk
-	CFLAGS+="${_ADDFLAGS}"
 
 }
