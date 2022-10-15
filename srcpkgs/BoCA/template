@@ -1,6 +1,6 @@
 # Template file for 'BoCA'
 pkgname=BoCA
-version=1.0.5
+version=1.0.6a
 revision=1
 archs="x86_64* i686*" # mirror smooth
 build_style=gnu-makefile
@@ -16,7 +16,7 @@ maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://www.freac.org/"
 distfiles="https://github.com/enzo1982/BoCA/releases/download/v${version}/boca-${version}.tar.gz"
-checksum=9befa4555b5d9a0ecf3b8472f1d8f14c26dee50993d1d66f35a2d0f140a72870
+checksum=acb9f47b8b4a76a3b24dbc3bbd40737744ba4aafc1ab668a1e5e6a09f58c4f46
 
 
 pre_build() {
@@ -33,6 +33,7 @@ BoCA-devel_package() {
 	pkg_install() {
 
 		vmove usr/include
+		vmove usr/lib/*.so
 
 	}
 
