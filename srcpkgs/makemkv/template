@@ -1,11 +1,129 @@
 # Template file for 'makemkv'
 pkgname=makemkv
-version=1.17.1beta
+version=1.17.2beta
+_distver=1.17.2
 revision=1
 archs="i686 x86_64 armv6l armv7l aarch64"
+wrksrc=${pkgname}-${version}
+create_wrksrc=yes
 build_style=meta
-depends="makemkv-oss makemkv-bin"
-short_desc="A program to backup optical discs, including encrypted Blu-Rays (meta package)"
+_ossargs="--enable-debug --with-pic"
+hostmakedepends="tar pkg-config qt5-host-tools"
+makedepends="openssl-devel zlib-devel expat-devel ffmpeg-devel MesaLib-devel qt5-devel"
+depends="makemkv-bin makemkv-oss"
+_basedesc="Program to backup optical video discs"
+short_desc="${_basedesc} - meta package"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
-license="Public domain"
-homepage="https://www.makemkv.com/"
+license="Public Domain"
+homepage="https://makemkv.com"
+distfiles="${homepage}/download/makemkv-oss-${_distver}.tar.gz \
+			${homepage}/download/makemkv-bin-${_distver}.tar.gz"
+checksum="a83f8abb3f23def0dc8783e535062a75b7df2f7612291a8a83a21f90b93f2da4 \
+			80008ccc9ee864293f20d49e25a57b1a717d872ffa17d7744032e9e633e21789"
+
+subpackages="makemkv-bin makemkv-oss makemkv-libaacs"
+
+
+do_extract() {
+	
+	for f in ${XBPS_SRCDISTDIR}/${pkgname}-${version}/*.tar.gz; do
+
+		tar xpf ${f}
+
+	done
+
+}
+
+
+do_configure() {
+	
+	# only makemkv-oss needs to be configured
+	cd ${wrksrc}/makemkv-oss-${_distver}
+
+	export lt_cv_sys_lib_dlsearch_path_spec="/usr/lib64 /usr/lib32 /usr/lib /lib /usr/local/lib"
+	./configure ${configure_args} ${_ossargs}
+
+}
+
+
+do_build() {
+	
+	cd ${wrksrc}/makemkv-oss-${_distver}
+
+	export lt_cv_sys_lib_dlsearch_path_spec="/usr/lib64 /usr/lib32 /usr/lib /lib /usr/local/lib"
+	make ${makejobs}
+
+}
+
+
+do_install() {
+	
+	cd ${wrksrc}/makemkv-oss-${_distver}
+	make DESTDIR=${DESTDIR} install
+
+
+	cd ${wrksrc}/makemkv-bin-${_distver}
+	mkdir -p tmp
+	echo accepted > tmp/eula_accepted
+	patch -Np1 <${FILESDIR}/fix_arch_detection.patch
+	make DESTDIR=${DESTDIR} install
+
+}
+
+
+makemkv-bin_package() {
+	
+	short_desc="${_basedesc} - closed components"
+	license="GPL-2.0-or-later,custom:MakeMKV"
+
+	case ${XBPS_TARGET_MACHINE} in
+
+		i686|x86_64) nopie_files="/usr/bin/makemkvcon" ;;
+
+	esac
+
+	pkg_install() {
+
+		vmove usr/share/MakeMKV
+		vmove usr/bin/sdftool
+		vmove usr/bin/makemkvcon
+		vlicense ${wrksrc}/makemkv-bin-${_distver}/src/eula_en_linux.txt
+		vdoc ${FILESDIR}/${pkgname}.README.voidlinux
+
+	}
+
+}
+
+
+makemkv-oss_package() {
+	
+	short_desc="${_basedesc} - open components"
+	license="LGPL-2.1-or-later,GPL-2.0-only,custom:MakeMKV"
+
+	pkg_install() {
+
+		vmove usr
+		vlicense ${wrksrc}/makemkv-oss-${_distver}/License.txt
+		vinstall ${FILESDIR}/makemkv-oss.conf 644 usr/lib/modules-load.d
+
+	}
+
+}
+
+
+makemkv-libaacs_package() {
+	
+	short_desc="${_basedesc} - libaacs replacement"
+	depends="makemkv-oss"
+	conflicts="libaacs" # and libbdplus
+	shlib_provides="libaacs.so.0 libbdplus.so.0"
+
+	pkg_install() {
+
+		mkdir -p ${PKGDESTDIR}/usr/lib
+		ln -sf libmmbd.so.0 ${PKGDESTDIR}/usr/lib/libaacs.so.0
+		ln -sf libmmbd.so.0 ${PKGDESTDIR}/usr/lib/libbdplus.so.0
+
+		vdoc ${FILESDIR}/${pkgname}.README.voidlinux
+	}
+}
