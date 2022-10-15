@@ -37,10 +37,9 @@ do_extract() {
 
 do_configure() {
 	
-	# only makemkv-oss needs to be configured
+	# only makemkv-oss needs to be configured and built
 	cd ${wrksrc}/makemkv-oss-${_distver}
 
-	export lt_cv_sys_lib_dlsearch_path_spec="/usr/lib64 /usr/lib32 /usr/lib /lib /usr/local/lib"
 	./configure ${configure_args} ${_ossargs}
 
 }
@@ -50,7 +49,6 @@ do_build() {
 	
 	cd ${wrksrc}/makemkv-oss-${_distver}
 
-	export lt_cv_sys_lib_dlsearch_path_spec="/usr/lib64 /usr/lib32 /usr/lib /lib /usr/local/lib"
 	make ${makejobs}
 
 }
@@ -102,7 +100,9 @@ makemkv-oss_package() {
 
 	pkg_install() {
 
-		vmove usr
+		vmove usr/bin
+		vmove usr/lib
+		vmove usr/share
 		vlicense ${wrksrc}/makemkv-oss-${_distver}/License.txt
 		vinstall ${FILESDIR}/makemkv-oss.conf 644 usr/lib/modules-load.d
 
