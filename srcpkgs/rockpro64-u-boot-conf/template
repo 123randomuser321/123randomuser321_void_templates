@@ -1,0 +1,20 @@
+# Template file for 'rockpro64-u-boot-conf'
+pkgname=rockpro64-u-boot-conf
+version=6.0.6
+revision=1
+archs="aarch64*"
+build_style=meta
+depends="rockpro64-u-boot linux6.0-${version}_${revision}"
+short_desc="U-Boot for Pine64 RockPro64 - Extlinux Config"
+maintainer="Sembo Sadur <labmailssadur@gmail.com>"
+license="Public Domain"
+homepage="http://www.denx.de/wiki/U-Boot/WebHome"
+
+
+do_install() {
+	
+	vinstall ${FILESDIR}/extlinux.conf 0644 boot/extlinux/
+	vsed -i ${DESTDIR}/boot/extlinux/extlinux.conf -e s/VERSION/${version}/
+	vsed -i ${DESTDIR}/boot/extlinux/extlinux.conf -e s/REVISION/${revision}/
+
+}
