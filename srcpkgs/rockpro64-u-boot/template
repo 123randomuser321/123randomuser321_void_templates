@@ -3,13 +3,12 @@
 # https://gitlab.manjaro.org/manjaro-arm/packages/core/uboot-rockpro64/-/blob/4e0d1437b053c12652abfe06223b9f80c45618fd/PKGBUILD
 pkgname=rockpro64-u-boot
 version=2022.04
-revision=1
+revision=2
 _tfaver=2.6
 archs="aarch64*"
 wrksrc=${pkgname}-${version}
 create_wrksrc=yes
 build_style=gnu-makefile
-make_dirs="/boot/extlinux 0755 root root"
 hostmakedepends="tar cross-arm-none-eabi-gcc bison flex openssl-devel python3 dtc bc"
 short_desc="U-Boot for Pine64 RockPro64"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
