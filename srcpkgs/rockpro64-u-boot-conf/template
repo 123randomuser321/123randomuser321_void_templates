@@ -1,7 +1,7 @@
 # Template file for 'rockpro64-u-boot-conf'
 pkgname=rockpro64-u-boot-conf
 version=6.0.6
-revision=2
+revision=1
 archs="aarch64*"
 build_style=meta
 depends="rockpro64-u-boot linux6.0-${version}_${revision}"
