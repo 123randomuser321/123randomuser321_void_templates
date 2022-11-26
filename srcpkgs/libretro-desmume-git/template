@@ -1,0 +1,36 @@
+# Template file for 'libretro-desmume-git'
+pkgname=libretro-desmume-git
+version=2022.09.26
+revision=1
+_buildcommit=fbd368c8109f95650e1f81bca1facd6d4d8687d7
+build_style=gnu-makefile
+hostmakedepends="git"
+makedepends="libpcap-devel libglvnd-devel"
+short_desc="Nintendo DS emulator - Libretro Port (Git)"
+maintainer="Sembo Sadur <labmailssadur@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://github.com/libretro/desmume"
+make_use_env=yes
+
+
+do_fetch() {
+	
+	git clone --recursive ${homepage} ${pkgname}-${version}
+	cd ${pkgname}-${version}
+	git reset --hard ${_buildcommit}
+
+}
+
+
+pre_build() {
+	
+	wrksrc="${wrksrc}/desmume/src/frontend/libretro"
+
+}
+
+
+pre_install() {
+	
+	wrksrc="${wrksrc}/desmume/src/frontend/libretro"
+
+}
