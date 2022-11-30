@@ -4,22 +4,15 @@ version=2022.09.26
 revision=1
 _buildcommit=fbd368c8109f95650e1f81bca1facd6d4d8687d7
 build_style=gnu-makefile
-hostmakedepends="git"
 makedepends="libpcap-devel libglvnd-devel"
 short_desc="Nintendo DS emulator - Libretro Port (Git)"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/libretro/desmume"
+distfiles="${homepage}/archive/${_buildcommit}.tar.gz"
+checksum=0663ec424c7b09a6bdcc2c1fa562caea74e3d46bb4c2463dc1759b014872facb
+
 make_use_env=yes
-
-
-do_fetch() {
-	
-	git clone --recursive ${homepage} ${pkgname}-${version}
-	cd ${pkgname}-${version}
-	git reset --hard ${_buildcommit}
-
-}
 
 
 pre_build() {

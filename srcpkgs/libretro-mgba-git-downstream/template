@@ -4,20 +4,12 @@ version=2022.10.25
 revision=1
 _buildcommit=ec5ecb26deba8d7ac830fc66ade9fac0eeaeb4ae
 build_style=gnu-makefile
-hostmakedepends="git"
 short_desc="mGBA Game Boy Advance Emulator - Libretro Port (Git, Downstream)"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="MPL-2.0"
 homepage="https://github.com/libretro/mgba"
+distfiles="${homepage}/archive/${_buildcommit}.tar.gz"
+checksum=f84e8e2517352df0dd16beabdad151a66e1c04b00e52d431ca26baede93a5d86
+
 make_use_env=yes
-
 conflicts="libretro-mgba"
-
-
-do_fetch() {
-	
-	git clone ${homepage} ${pkgname}-${version}
-	cd ${pkgname}-${version}
-	git reset --hard ${_buildcommit}
-
-}

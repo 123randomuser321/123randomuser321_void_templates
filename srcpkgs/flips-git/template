@@ -4,21 +4,15 @@ version=2022.07.16
 revision=1
 _buildcommit=ce2e7ca2175b7e8bf2b8d64216887ac3747fc750 # change as you please
 build_style=gnu-makefile
-hostmakedepends="pkg-config git"
+hostmakedepends="pkg-config"
 makedepends="gtk+3-devel libgomp-devel"
 short_desc="Floating IPS - patcher for IPS and BPS files"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/Alcaro/flips"
+distfiles="${homepage}/archive/${_buildcommit}.tar.gz"
+checksum=61c0f30c03e4ffc2406b60d0c153dc6ec5958e11df4cf017ba898d9417a60dcb
 
-
-do_fetch() {
-	
-	git clone --recursive https://github.com/Alcaro/flips ${pkgname}-${version}
-	cd ${pkgname}-${version}
-	git reset --hard ${_buildcommit}
-
-}
 
 pre_build() {
 	
