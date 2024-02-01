@@ -1,6 +1,6 @@
 # Template file for 'smooth'
 pkgname=smooth
-version=0.9.9
+version=0.9.10
 revision=1
 archs="x86_64* i686*" # arm variants miss cpuid
 build_style=gnu-makefile
@@ -13,7 +13,7 @@ maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="Artistic-2.0"
 homepage="http://www.smooth-project.org/"
 distfiles="https://github.com/enzo1982/smooth/releases/download/v${version}/smooth-${version}.tar.gz"
-checksum=ccbf04256727d2f71a6b8ccfb2bbe3032cc3fd0f8b2461d4ead7d64e40a209ca
+checksum=c018ea09eb4e269268cb123bb5d24a813d07c985384c5384d7fa73b7173e9f1c
 
 
 pre_build() {
