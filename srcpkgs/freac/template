@@ -1,6 +1,6 @@
 # Template file for 'freac'
 pkgname=freac # xbps-src doesn't like ":"
-version=1.1.6
+version=1.1.7
 revision=1
 archs="x86_64* i686*" # mirror smooth
 build_style=gnu-makefile
@@ -12,7 +12,7 @@ maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://www.freac.org/"
 distfiles="https://github.com/enzo1982/freac/releases/download/v${version}/freac-${version}.tar.gz"
-checksum=8269c6c733f91bbca38027375c0afd424093ac64c621871f0fe30726d6c46248
+checksum=617d51759315f65e387fcaf1f1b455c97a2fb53bfdbd2521c9c586b3271f3528
 
 
 pre_build() {
