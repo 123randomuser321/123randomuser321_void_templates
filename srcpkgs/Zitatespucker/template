@@ -1,0 +1,30 @@
+# Template file for 'Zitatespucker'
+pkgname=Zitatespucker
+version=1.0.0
+revision=1
+build_style=gnu-makefile
+make_build_args="$(vopt_if sqlite ENABLE_SQLITE=1) $(vopt_if jsonc ENABLE_JSON_C=1)"
+make_install_args="${make_build_args}"
+makedepends="$(vopt_if sqlite sqlite-devel) $(vopt_if jsonc json-c-devel)"
+short_desc="Library to spit out quotes (and relating information)"
+maintainer="Sembo Sadur <labmailssadur@gmail.com>"
+license="LGPL-3.0-only"
+homepage="https://github.com/123randomuser321/Zitatespucker"
+distfiles="${homepage}/archive/refs/tags/${version}.tar.gz"
+checksum=be0a5a3d673294be9c7cf82a9874cb4e9970f527dd2a1fbecb77f6e5ccdded50
+
+make_use_env=yes
+
+build_options="sqlite jsonc"
+build_options_default="sqlite jsonc"
+
+
+Zitatespucker-devel_package() {
+    short_desc+=" - development files"
+    depends="${sourcepkg}>=${version}_${revision}"
+    pkg_install() {
+        vmove usr/include
+        vmove "usr/lib/*.a"
+        vmove "usr/lib/*.so"
+    }
+}
