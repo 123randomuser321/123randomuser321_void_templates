@@ -1,6 +1,6 @@
 # Template file for 'Zitatespucker'
 pkgname=Zitatespucker
-version=1.0.0
+version=1.0.2.1
 revision=1
 build_style=gnu-makefile
 make_build_args="$(vopt_if sqlite ENABLE_SQLITE=1) $(vopt_if jsonc ENABLE_JSON_C=1)"
@@ -11,9 +11,7 @@ maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="LGPL-3.0-only"
 homepage="https://github.com/123randomuser321/Zitatespucker"
 distfiles="${homepage}/archive/refs/tags/${version}.tar.gz"
-checksum=be0a5a3d673294be9c7cf82a9874cb4e9970f527dd2a1fbecb77f6e5ccdded50
-
-make_use_env=yes
+checksum=378b6029370d84beaad1b65a793b39bc90f72ad91ba00617b79468299b294fd7
 
 build_options="sqlite jsonc"
 build_options_default="sqlite jsonc"
