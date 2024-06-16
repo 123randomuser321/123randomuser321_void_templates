@@ -1,20 +1,22 @@
 # Template file for 'Zitatespucker'
 pkgname=Zitatespucker
-version=1.0.2.1
+version=2.0.0
 revision=1
 build_style=gnu-makefile
-make_build_args="$(vopt_if sqlite ENABLE_SQLITE=1) $(vopt_if jsonc ENABLE_JSON_C=1)"
+make_build_args="$(vopt_if sqlite ENABLE_SQLITE=1) $(vopt_if jsonc ENABLE_JSON_C=1) $(vopt_if jansson ENABLE_JANSSON=1)"
 make_install_args="${make_build_args}"
-makedepends="$(vopt_if sqlite sqlite-devel) $(vopt_if jsonc json-c-devel)"
+makedepends="$(vopt_if sqlite sqlite-devel) $(vopt_if jsonc json-c-devel) $(vopt_if jansson jansson-devel)"
 short_desc="Library to spit out quotes (and relating information)"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
-license="LGPL-3.0-only"
+license="LGPL-3.0-only, 0BSD"
 homepage="https://github.com/123randomuser321/Zitatespucker"
 distfiles="${homepage}/archive/refs/tags/${version}.tar.gz"
-checksum=378b6029370d84beaad1b65a793b39bc90f72ad91ba00617b79468299b294fd7
+checksum=b73367c40cec702f7207a67f54813ee98dc9476d68c2b8fdbe11addbcf3049ee
 
-build_options="sqlite jsonc"
+build_options="sqlite jsonc jansson"
 build_options_default="sqlite jsonc"
+
+vopt_conflict jsonc jansson
 
 
 Zitatespucker-devel_package() {
