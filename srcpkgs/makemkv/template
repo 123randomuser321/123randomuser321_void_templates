@@ -1,7 +1,7 @@
 # Template file for 'makemkv'
 pkgname=makemkv
-version=1.17.6beta
-_distver=1.17.6
+version=1.17.8beta
+_distver=1.17.8
 revision=1
 archs="i686 x86_64 armv6l armv7l aarch64"
 wrksrc=${pkgname}-${version}
@@ -20,8 +20,8 @@ homepage="https://makemkv.com"
 changelog="${homepage}/download/history.html"
 distfiles="${homepage}/download/makemkv-oss-${_distver}.tar.gz \
 			${homepage}/download/makemkv-bin-${_distver}.tar.gz"
-checksum="d9db4d772bf4f9061642b7eb22ee5140a48de2c71258ab8b14d949657a710d43 \
-			287646005029f771d366cf0e4fbeb17fcf1033452d955547deae7b0999b4ed1b"
+checksum="92752bce3fc9f97939375b60d2af622174fe86a4ad9248cbdd8736629e6dbc8a \
+			8e0f547430d9afeed976c789b5becdfb2ecfae1caade12e8e3e119a734717041"
 
 subpackages="makemkv-bin makemkv-oss makemkv-libaacs"
 
