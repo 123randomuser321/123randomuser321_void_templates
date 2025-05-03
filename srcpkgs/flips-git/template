@@ -2,7 +2,7 @@
 pkgname=flips-git
 version=2022.07.16
 revision=1
-_buildcommit=ce2e7ca2175b7e8bf2b8d64216887ac3747fc750 # change as you please
+_buildcommit=359d414cff73b3e0400871d3c288a59b36564834 # TODO: switch to normal release builds
 build_style=gnu-makefile
 hostmakedepends="pkg-config"
 makedepends="gtk+3-devel libgomp-devel"
@@ -11,7 +11,7 @@ maintainer="Sembo Sadur <labmailssadur@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/Alcaro/flips"
 distfiles="${homepage}/archive/${_buildcommit}.tar.gz"
-checksum=61c0f30c03e4ffc2406b60d0c153dc6ec5958e11df4cf017ba898d9417a60dcb
+checksum=36e140b6c7fd5438c2cc46013c338b9e579df199cefd5a8f1292a8947ee05d74
 
 
 pre_build() {
