@@ -1,0 +1,33 @@
+# Template file for 'pdfio'
+pkgname=pdfio
+version=1.5.3
+revision=1
+build_style=gnu-configure
+configure_args="--enable-shared --enable-libpng"
+hostmakedepends="pkg-config"
+makedepends="zlib-devel libpng-devel"
+short_desc="PDFio is a simple C library for reading and writing PDF files"
+maintainer="Sembo Sadur <labmailssadur@gmail.com>"
+license="Apache-2.0"
+homepage="https://www.msweet.org/pdfio/"
+changelog="https://github.com/michaelrsweet/pdfio/blob/master/CHANGES.md"
+distfiles="https://github.com/michaelrsweet/pdfio/releases/download/v${version}/${pkgname}-${version}.tar.gz"
+checksum=c10c51b3d204885cb3a9f1a7d4bafa9ebaaee1801f176470a0c956d5d48aac9a
+
+post_install() {
+	vlicense LICENSE
+}
+
+
+pdfio-devel_package() {
+	short_desc+=" - development files"
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/include
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/*.so"
+		vmove usr/lib/pkgconfig
+		vmove usr/share/man
+		vmove usr/share/doc
+	}
+}
