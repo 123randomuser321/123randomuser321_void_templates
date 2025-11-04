@@ -1,12 +1,12 @@
 # Template file for 'makemkv'
 pkgname=makemkv
-version=1.18.1beta
-_distver=1.18.1
+version=1.18.2beta
+_distver=1.18.2
 revision=1
 archs="i686 x86_64 armv6l armv7l aarch64"
 wrksrc=${pkgname}-${version}
 create_wrksrc=yes
-build_style=meta
+metapackage=yes
 _ossargs="--enable-debug --with-pic"
 # Void's packaging manual states that debug symbols shall be included, so that xbps-src may strip them and generate a -dbg pkg
 hostmakedepends="tar pkg-config qt5-host-tools"
@@ -20,8 +20,8 @@ homepage="https://makemkv.com"
 changelog="${homepage}/download/history.html"
 distfiles="${homepage}/download/makemkv-oss-${_distver}.tar.gz \
 			${homepage}/download/makemkv-bin-${_distver}.tar.gz"
-checksum="dc47eefb1e68f7d539e4b079bb93ce64144104ad233de56818939810ecd03b7b \
-			b16576651eadec3585e817843a2a1a0ebcaa713b89dd1e020d8b1d056ddb2fd6"
+checksum="b9497f5555c257f5d3c7f18b6ab03c74cff3ea4437e80349d618d115bf5fa445 \
+			bfc4c7cebc0f00497671ffd56e6a34f0770a9e6af7eff2f0127efa143f28636e"
 
 subpackages="makemkv-bin makemkv-oss makemkv-libaacs"
 
