@@ -1,7 +1,7 @@
 # Template file for 'makemkv'
 pkgname=makemkv
-version=1.18.2beta
-_distver=1.18.2
+version=1.18.3beta
+_distver=1.18.3
 revision=1
 archs="i686 x86_64 armv6l armv7l aarch64"
 wrksrc=${pkgname}-${version}
@@ -11,7 +11,7 @@ _ossargs="--enable-debug --with-pic"
 # Void's packaging manual states that debug symbols shall be included, so that xbps-src may strip them and generate a -dbg pkg
 hostmakedepends="tar pkg-config qt5-host-tools"
 makedepends="openssl-devel zlib-devel expat-devel ffmpeg-devel MesaLib-devel qt5-devel"
-depends="makemkv-bin makemkv-oss"
+depends="makemkv-bin-${version}_${revision} makemkv-oss-${version}_${revision}"
 _basedesc="Program to backup optical video discs"
 short_desc="${_basedesc} - meta package"
 maintainer="Sembo Sadur <labmailssadur@gmail.com>"
@@ -20,8 +20,8 @@ homepage="https://makemkv.com"
 changelog="${homepage}/download/history.html"
 distfiles="${homepage}/download/makemkv-oss-${_distver}.tar.gz \
 			${homepage}/download/makemkv-bin-${_distver}.tar.gz"
-checksum="b9497f5555c257f5d3c7f18b6ab03c74cff3ea4437e80349d618d115bf5fa445 \
-			bfc4c7cebc0f00497671ffd56e6a34f0770a9e6af7eff2f0127efa143f28636e"
+checksum="bc8bb084ae3aabcd503d5bb93efc273e046e4fd4663d39a9836ce0c047fee823 \
+			c1ee720ae91b276a7c89be861146c5b934631831e8d6c8f453406435724e92bd"
 
 subpackages="makemkv-bin makemkv-oss makemkv-libaacs"
 
@@ -122,7 +122,7 @@ makemkv-oss_package() {
 makemkv-libaacs_package() {
 	
 	short_desc="${_basedesc} - libaacs replacement"
-	depends="makemkv-oss"
+	depends="makemkv-oss-${version}_${revision}"
 	conflicts="libaacs" # and libbdplus
 	shlib_provides="libaacs.so.0 libbdplus.so.0"
 
